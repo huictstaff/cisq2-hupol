@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  db:
+    build: development/db
+    ports:
+      - "15432:5432"
+    environment:
+      - "POSTGRES_USER=admin"
+      - "POSTGRES_PASSWORD=admin"
+      - "DB_APP_NAME=cisq2-hupol"
+      - "DB_APP_USER=cisq2-hupol"
+      - "DB_APP_PASS=cisq2-hupol"
+    volumes:
+      - "./development/data:/var/data/db"
