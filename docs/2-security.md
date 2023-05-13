@@ -53,8 +53,8 @@ Denk aan een zinvolle, beschrijvende commit message.
 
 ### Stap 3. Automatische security check
 
-Voer een automatische analyse uit met de
-[SonarQube](https://www.baeldung.com/sonar-qube).
+Voer een automatische analyse uit met 
+[Snyk](https://snyk.io/).
 Deze tool checkt ook je code style.
 Voel je vrij om deze zaken ook te verbeteren,
 maar wij zijn voor deze opdracht geïnteresseerd in wat wordt
