@@ -5,14 +5,14 @@
 > __Elron Husky, CEO of *Husky Martian Political Systems*:__
 >
 > "Voting information can be considered sensitive information.
-> That's why we at Hupol made a gigantic effort 
+> That's why we at Hupol made a gigantic effort
 > into securing our system --- and, of course, our user's data!
 > This means we are *very* careful about who is able to access what.
 > We put in the work!
 > A small price to pay for democratizing the galaxy, don't you agree?"
 
 ## De opdracht
-Wat een grote ambities! Het is belangrijk dat zo'n applicatie 
+Wat een grote ambities! Het is belangrijk dat zo'n applicatie
 goed beveiligd is. Daarom is ons gevraagd om kritisch naar
 te kijken naar de `security` component, maar ook de rest van het project.
 Bevindingen, risico's en bedenkingen schrijven we op. Verbeteringen voeren we door.
@@ -33,10 +33,10 @@ Wat zijn de security-overwegingen en het beleid bij deze applicatie?
 Schrijf in op wat er volgens jou beter kan
 wat betreft de code van de `security` component. Denk hierbij aan de
 [wachtwoorden](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html),
-[OWASP top 10](https://owasp.org/www-project-top-ten/), 
-de [CIA-triad](https://www.fortinet.com/resources/cyberglossary/cia-triad) 
+[OWASP top 10](https://owasp.org/www-project-top-ten/),
+de [CIA-triad](https://www.fortinet.com/resources/cyberglossary/cia-triad)
 en eventuele ethische of juridische overwegingen die je hebt
-bij dit project. 
+bij dit project.
 Licht beweringen toe en vermeld gebruikte bronnen.
 
 Dat kan je doen in een nieuw markdown-bestand
@@ -44,7 +44,7 @@ Dat kan je doen in een nieuw markdown-bestand
 
 Bekijk bijvoorbeeld ook hoe Spring omgaat met
 [security](https://spring.io/guides/topicals/spring-security-architecture/)
-[authentication](https://www.baeldung.com/spring-security-basic-authentication) 
+[authentication](https://www.baeldung.com/spring-security-basic-authentication)
 en [authorization](https://www.baeldung.com/role-and-privilege-for-spring-security-registration).
 Hoe is dat in dit project geregeld? Kijk in de code, de tests, de database en de docs.
 
@@ -53,40 +53,28 @@ Denk aan een zinvolle, beschrijvende commit message.
 
 ### Stap 3. Automatische security check
 
-Voer een automatische analyse uit met 
-[Snyk](https://snyk.io/).
-Deze tool checkt ook je code style.
-Voel je vrij om deze zaken ook te verbeteren,
-maar wij zijn voor deze opdracht geïnteresseerd in wat wordt
-genoemd onder *vulnerabilities*. 
+Voer een automatische analyse uit met [Snyk](https://snyk.io/).
+Van oorsprong is Snyk een dependency checker die aangeeft welke dependencies er worden gebruikt met bekende kwetsbaarheden.
+Later is hier Static Analysis Security Tests (SAST) tegenaan geplakt. Om dit te gebruiken moet je dit wel eerst aanzetten via de webinterface.
 
-Noteer wat je opvalt in `docs/2-notes.md`. 
+Je kan de command line interface (CLI) gebruiken om Snyk te draaien, aan te raden is om deze via npm te installeren.
+Voor de dependencies wordt `snyk test` gebruikt, voor SAST wordt `snyk code test` gebruikt.
+Om een rapportje in de webinterface te tonen kun je `snyk monitor` gebruiken.
+
+Voel je vrij om de gevonden problemen ook te verbeteren,
+maar wij zijn voor deze opdracht vooral geïnteresseerd in welke kwetsbaarheden er worden genoemd.
+
+Noteer wat je opvalt in `docs/2-notes.md`.
 Vermeld gebruikte bronnen!
 
-Voeg deze tool ook toe aan je
-build pipeline (Maven en GitHub Actions).
+Voeg deze tool ook toe aan je build pipeline (GitHub Actions). Zie hiervoor de slides.
 
 Commit en push je werk. Draait dit ook in de pipeline? Slaagt alles nog?
 Denk aan een zinvolle, beschrijvende commit message.
 
-
-### Stap 4. Automatische dependency check
-
-Voer een automatische analyse uit met de 
-[OWASP dependency check](https://owasp.org/www-project-dependency-check/). 
-Wat valt je op?
-
-Noteer wat je opvalt in `docs/2-notes.md`. Vermeld gebruikte bronnen!
-
-Voeg deze tool ook toe aan je 
-build pipeline (Maven en GitHub Actions).
-
-Commit en push je werk. Draait dit ook in de pipeline? Slaagt alles nog?
-Denk aan een zinvolle, beschrijvende commit message.
-
-### Stap 5. Voer verbeteringen door
+### Stap 4. Voer verbeteringen door
 Pas de `security` component aan waar nodig om de security te verbeteren.
-Voer niet alleen de verbeteringen door die uit de geautomatiseerde 
+Voer niet alleen de verbeteringen door die uit de geautomatiseerde
 security analysis is gekomen, maar ook wat je zelf denkt dat beter kan.
 
 Je kan hier ook gebruik maken van AI en andere bronnen.
@@ -95,7 +83,7 @@ Maak hier een notitie van in een comment of in `docs/2-notes.md`.
 Commit en push je werk. Draait dit ook in de pipeline? Slaagt alles nog?
 Denk aan een zinvolle, beschrijvende commit message.
 
-### Stap 6. Reflecteer
+### Stap 5. Reflecteer
 
 Rufus, product owner, geeft tijdens een Scrum backlog-sessie aan
 dat we binnenkort ook XML-bestanden moeten ondersteunen
