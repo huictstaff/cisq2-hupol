@@ -377,7 +377,7 @@ de volgende omgevingsvariabelen meegeven via Render.com
 (environment onder onze hupol webservice):
 
 * `SPRING_DATASOURCE_URL`
-* `SPRING_DATASOURCE_USER`
+* `SPRING_DATASOURCE_USERNAME`
 * `SPRING_DATASOURCE_PASSWORD`
 
 Hoe komen we erachter hoe deze moeten worden ingevuld?
@@ -397,7 +397,7 @@ Vul deze als volgt in aan de hand van je connectie-string:
 (let op, JDBC verwacht `postgresql` en niet `postgres`)
 
 * `SPRING_DATASOURCE_URL`: `jdbc:postgresql://<host>/<database>`
-* `SPRING_DATASOURCE_USER`: `<gebruiker>`
+* `SPRING_DATASOURCE_USERNAME`: `<gebruiker>`
 * `SPRING_DATASOURCE_PASSWORD`: `<wachtwoord>`
 
 Test je service uit door calls te doen naar de
