@@ -57,14 +57,18 @@ wat er in de container zit en hoe deze benaderd kan
 worden.
 
 Maak in onze project root een bestand aan met
-de naam `Dockerfile`.
+de naam `Dockerfile` zonder bestandsextensie.
 
 #### A. Een basis image gebruiken
-
 Je schrijft meestal niet de hele image zelf,
 maar baseert het op een bestaande image waar
 de basisbenodigdheden inzitten. Voor uitleg van Docker zelf kijk [hier](https://docs.docker.com/language/java/build-images/#create-a-dockerfile-for-java).
 
+Uiteindelijk heb je een dockerfile met daarin:
+1. `FROM` met Java 17 JDK + tag
+2. `RUN` commandos
+3. `Copy` de gecompileerde JAR
+4. `Entrypoint` opties
 In je `Dockerfile` kan je het basisimage aangeven
 met de [`FROM <image>:<tag>` instructie](https://docs.docker.com/engine/reference/builder/#from). 
 
