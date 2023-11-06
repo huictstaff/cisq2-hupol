@@ -1,4 +1,4 @@
-# Opdracht 1: Maintainability
+# Opdracht 1: ISO25010 pijler: maintainability
 
 > ![Elron Husky, a husky dog in a suit](img/elron-husky.png)
 >
@@ -29,7 +29,7 @@ Hierbij maken we gebruik van *static analysis tools*,
 
 ### Stap 1. Bestudeer de opdracht en de code, draai de tests
 Neem de opdracht door. Wat zijn de ambities van het bedrijf?
-Wat zou er allemaal in het project moeten zitten?
+Wat zou er allemaal in het project moeten zitten? Wat weet je allemaal al van ISO25010's pijler maintainability?
 Welke technieken zijn er gebruikt?
 Wat zijn de verantwoordelijkheden van de verschillende components?
 Hoe zit de structuur in elkaar volgens de *intended architecture*?
@@ -42,8 +42,7 @@ werkend krijgen? Vergeet niet `docker-compose up` te draaien
 voor de instellingen)
 
 ### Stap 2. Noteer wat er beter kan
-
-Schrijf in een paar zinnen of punten op wat er volgens jou beter kan
+Maak een nette indeling met kopjes in een markdowndocument en schrijf puntsgewijs op wat er volgens jou beter kan
 wat betreft de code van de `votes` en `candidates` components.
 
 Denk hierbij bijvoorbeeld aan *code smells* en hoe de *implemented architecture*
@@ -54,12 +53,13 @@ bij andere cursussen hebt geleerd over een onderhoudbare structuur
 [high cohesion](https://en.wikipedia.org/wiki/Cohesion_(computer_science))).
 
 Dat kan je doen in een nieuw markdown-bestand
-(bijvoorbeeld onder `docs/1-notes.md`). Vermeld gebruikte bronnen!
+(bijvoorbeeld onder `docs/1-notes.md`). Vermeld gebruikte bronnen! Plagieer niet van generatieve AI, internetbronnen of je medestudenten.
+Wees grondig in je analyse en denk er niet te makkelijk over! Bekijk de code kritisch en analyseer grondig wat er beter kan. 
 
 Commit en push je werk. 
 Denk aan een zinvolle, beschrijvende commit message.
 
-### Stap 3. Schoon de code op
+### Stap 3. Schoon de code op (deel 1)
 
 De lead developer van het team, Jimothy, tikt ons op de schouder:
 
@@ -95,12 +95,13 @@ bijvoorbeeld door gebruik te maken van Java-features
 als [switch expressions](https://docs.oracle.com/en/java/javase/13/language/switch-expressions.html),
 [functional interfaces](https://www.baeldung.com/java-8-functional-interfaces) 
 en de [Stream API](https://stackify.com/streams-guide-java-8/). 
+Bedenk welke verantwoordelijkheden in welke klassen of laag thuishoren.
 Je mag nieuwe klassen introduceren en de code vriendelijker voor
 gebruikers en developers maken, maar doe nog geen grotere wijzigingen
 (dat doen we in stap 5 en 6). Natuurlijk mag je wel tests toevoegen!
 
 Je mag aanvullend alle hulp inschakelen die je kunt gebruiken:
-je IDE, een AI (ChatGPT, Bing, etc.) of welke andere truc dan ook.
+je IDE, een generatieve AI (ChatGPT, Bing, etc.) of welke andere truc dan ook.
 Schrijf wel op wat je hebt gedaan (in `notes-1.md`)  
 en wees kritisch op de uitkomst. Vermeld gebruikte bronnen!
 
@@ -126,7 +127,7 @@ Denk aan een zinvolle, beschrijvende commit message.
 Waarschijnlijk moet je dit een aantal keer herhalen
 om het werkend te krijgen in GitHub Actions.
 
-### Stap 5. Test en herstel de architectuur
+### Stap 5. Code opschonen deel 2: test en herstel de architectuur (
 
 Sana, de architect voor Hupol, ziet wat je allemaal gedaan hebt.
 Ze is erg onder de indruk! Ze vraagt zich af: 
@@ -139,9 +140,10 @@ Onderzoek de architecturele regels van het hele project
 en test en verbeter deze met behulp van 
 [ArchUnit](https://www.archunit.org/getting-started).
 
-Maak nieuwe packages en klassen waar nodig (en logisch).
-Je mag het hele project aanpassen, maar let erop dat alle
-tests nog blijven slagen!
+Maak nieuwe packages en klassen waar nodig (en logisch). Waar liggen de verantwoordelijkheden van packages, hoe praten deze met elkaar? 
+Wie beheert zijn informatie en hoe komt een pacakage aan informatie die diegene nodig heeft? 
+Bedenk welke (nieuwe) klassen er nodig zijn en teken eventueel een domeinmodel uit voor jezelf.
+Je mag het hele project inclusief alle tests aanpassen, maar let erop dat alle tests uiteindelijk weer slagen! (dus comment geen tests uit)
 
 Zie ook
 [use cases](https://www.archunit.org/use-cases),
@@ -168,7 +170,7 @@ moeten refactoren, maar we beginnen klein, denk aan de
 
 Je hoeft geen XML-parser te implementeren, maar pas de bestaande code 
 aan zodat het CSV-parsing-gedeelte gemakkelijk kan worden uitgewisseld
-voor een XML-parsing-gedeelte.
+voor een XML-parsing-gedeelte. Maak het zo, dat uiteindelijk alleen de interface voor de XML-parser geimplementeerd hoeft te worden.
 
 Bekijk welke verantwoordelijkheden hier nodig zijn en hoe je deze
 over verschillende objecten kunt verdelen met handige 

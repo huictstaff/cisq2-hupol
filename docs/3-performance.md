@@ -1,4 +1,4 @@
-# 2. Performance Assignment
+# 3. ISO25010 pijler: performance
 
 > ![Elron Husky, a husky dog in a suit](img/elron-husky.png)
 >
@@ -16,7 +16,7 @@
 Performance wordt vaak ondergewaardeerd door software developers.
 Het kan het verschil maken in hoe
 klanten de software waarderen: 
-wie heeft het geduld om te wachten op slome software?
+wie heeft het geduld om te wachten op langzame software?
 Bovendien betekent efficiënte code dat kan worden
 bespaard op hardware en energiekosten.
 Op Mars (en op Aarde) is dat geen overbodige luxe!
@@ -70,7 +70,7 @@ Denk aan een zinvolle, beschrijvende commit message.
 
 Laten we de results API testen.
 
-#### A. Een basale meting met Postman
+#### 3A. Een basale meting met Postman
 We hebben wat testdata opgenomen onder `test/resources/fixtures/candidates-01.csv`
 en `test/resources/fixtures/votes-01.csv`. 
 Deze data wordt gebruikt voor onze integration tests, maar 
@@ -90,7 +90,7 @@ Maak een screenshot (`WIN + S`) van je Postman response time
 en sla deze op onder `docs/perf-postman-1` met file-extensie. Je kan het ook in je `3/notes.md` 
 [opnemen](https://www.digitalocean.com/community/tutorials/markdown-markdown-images).
 
-#### B. Betrouwbaarder meten met Apache Benchmark
+#### 3B. Betrouwbaarder meten met Apache Benchmark
 Check in de commandline of je `ab` hebt geinstalleerd: `ab -v`.
 Zo niet, [installeer Apache Benchmark](https://www.cedric-dumont.com/2017/02/01/install-apache-benchmarking-tool-ab-on-windows/).
 Vergeet niet Apache's `bin` directory toe te voegen aan je `PATH` 
@@ -122,7 +122,7 @@ Maak weer een screenshot (`WIN + S`) van deze performance
 en sla deze op onder `docs/perf-ab-1` met file-extensie. Je kan het ook in je `3/notes.md`
 [opnemen](https://www.digitalocean.com/community/tutorials/markdown-markdown-images).
 
-#### C. Realistischere data gebruiken
+#### 3C. Realistischere data gebruiken
 
 Het algoritme lijkt in orde met deze hoeveelheid data!
 Maar hoe schaalt het algoritme wanneer er meer gegevens in het systeem zitten?
@@ -150,12 +150,12 @@ psql -c "\copy vote FROM '/var/hupol/votes.csv' DELIMITER ';' CSV" -U cisq2-hupo
 
 Gelukt? Nu zijn we klaar voor het echte werk.
 
-#### D. Meten met realistische data
+#### 3D. Meten met realistische data
 
-Voer stap A uit, maar met de nieuwe data. Wat valt je op?
+Voer stap 3A uit, maar met de nieuwe data. Wat valt je op?
 Maak weer een screenshot en neem deze in je docs op (`docs/perf-postman-2`) met file-extensie.
 
-Voer stap B uit, maar met de nieuwe data. Wat valt je op.
+Voer stap 3B uit, maar met de nieuwe data. Wat valt je op.
 Maak weer een screenshot en neem deze in je docs op (`docs/perf-ab-2`) met file-extensie.
 
 ### Stap 4. Experimenteer met een Java benchmark
@@ -173,7 +173,7 @@ Tijd voor een experiment! Meten is weten!
 Maak een benchmark waarin we de huidige code meten tegenover
 een voorgestelde *parallelle* variant.
 
-#### A. Voeg Java Microbenchmark Harness (JMH) toe
+#### 4A. Voeg Java Microbenchmark Harness (JMH) toe
 
 We gaan onze benchmark draaien met [JMH](https://github.com/openjdk/jmh),
 meer info kan je vinden op [Baeldung](https://www.baeldung.com/java-microbenchmark-harness), maar we helpen je op weg.
@@ -186,7 +186,7 @@ Voeg elke `<dependency>` toe onder `<dependencies>` aan de `pom.xml`:
 Draai Maven, bijvoorbeeld met `mvn dependency:resolve` 
 of `mvn compile`.
 
-#### B. Experiment-opstelling
+#### 4B. Experiment-opstelling
 
 Het is een goed idee om onze oude code te behouden
 en een experiment toe te voegen,
@@ -204,7 +204,7 @@ de volgende inhoud:
 * `RepositoryMocks`: handige methodes om mocks voor votes en candidates te hebben
 * `ResultServiceBenchmark`: hier nemen we onze benchmark code op
 
-#### C. Zet de benchmark op
+#### 4C. Zet de benchmark op
 
 Voeg aan de ResultServiceBenchmark een `main`-methode toe 
 als entrypoint:
@@ -289,8 +289,9 @@ Wil je checken of je opzet werkt?
 Dan kan je nu de benchmark draaien.
 Als het goed is, moet de uitkomst ongeveer 
 hetzelfde zijn. Dit kan wel zo'n tien minuten duren!
+Maak weer een screenshot en neem deze in je docs op (`docs/jmh-1`) met file-extensie.
 
-#### D. Experimenteer met verbeteringen
+#### 4D. Experimenteer met verbeteringen
 
 Voer de voorgestelde optimalisaties 
 door met parallelle streams en verbeterde 
@@ -310,8 +311,10 @@ Misschien kan je zelfs zien dat de tests minder traag worden...
 
 Commit en push je werk.
 Denk aan een zinvolle, beschrijvende commit message.
+Maak weer een screenshot en neem deze in je docs op (`docs/jmh-2`) met file-extensie.
 
-#### E. Draai de benchmark
+
+#### 4E. Draai de benchmark
 
 Draai de benchmark via de main-methode in de ResultServiceBenchmark.
 Neem de resultaten op in je notities (`docs/3-notes.md`) in een

@@ -1,4 +1,4 @@
-# 4. Operations Assignment
+# 4. ISO25010 pijler: operations
 
 > ![Elron Husky, a husky dog in a suit](img/elron-husky.png)
 >
@@ -63,7 +63,7 @@ de naam `Dockerfile`.
 
 Je schrijft meestal niet de hele image zelf,
 maar baseert het op een bestaande image waar
-de basisbenodigdheden inzitten.
+de basisbenodigdheden inzitten. Voor uitleg van Docker zelf kijk [hier](https://docs.docker.com/language/java/build-images/#create-a-dockerfile-for-java).
 
 In je `Dockerfile` kan je het basisimage aangeven
 met de [`FROM <image>:<tag>` instructie](https://docs.docker.com/engine/reference/builder/#from). 

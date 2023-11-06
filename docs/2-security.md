@@ -1,4 +1,4 @@
-# 3. Security Assignment
+# Opdracht 2: ISO25010 pijler: security
 
 > ![Elron Husky, a husky dog in a suit](img/elron-husky.png)
 >
@@ -30,7 +30,7 @@ Wat zijn de security-overwegingen en het beleid bij deze applicatie?
 
 ### Stap 2. Noteer welke risico's en problemen je ziet
 
-Schrijf in op wat er volgens jou beter kan
+Maak een nette indeling met kopjes in een markdowndocument en schrijf puntsgewijs op wat er volgens jou beter kan
 wat betreft de code van de `security` component. Denk hierbij aan de
 [wachtwoorden](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html),
 [OWASP top 10](https://owasp.org/www-project-top-ten/),
@@ -61,11 +61,9 @@ Je kan de command line interface (CLI) gebruiken om Snyk te draaien, aan te rade
 Voor de dependencies wordt `snyk test` gebruikt, voor SAST wordt `snyk code test` gebruikt.
 Om een rapportje in de webinterface te tonen kun je `snyk monitor` gebruiken.
 
-Voel je vrij om de gevonden problemen ook te verbeteren,
-maar wij zijn voor deze opdracht vooral geïnteresseerd in welke kwetsbaarheden er worden genoemd.
-
+De gevonden verbeteringen verbeter je in stap 4.
 Noteer wat je opvalt in `docs/2-notes.md`.
-Vermeld gebruikte bronnen!
+Vermeld gebruikte bronnen! Weet dat er meer security issues inzitten dan wat de automatische security check aangeeft.
 
 Voeg deze tool ook toe aan je build pipeline (GitHub Actions). Zie hiervoor de slides.
 
@@ -77,8 +75,8 @@ Pas de `security` component aan waar nodig om de security te verbeteren.
 Voer niet alleen de verbeteringen door die uit de geautomatiseerde
 security analysis is gekomen, maar ook wat je zelf denkt dat beter kan.
 
-Je kan hier ook gebruik maken van AI en andere bronnen.
-Maak hier een notitie van in een comment of in `docs/2-notes.md`.
+Je kan hier ook gebruik maken van generatieve AI en andere bronnen.
+Maak hier een notitie van in `docs/2-notes.md`, anders is het mogelijk plagiaat.
 
 Commit en push je werk. Draait dit ook in de pipeline? Slaagt alles nog?
 Denk aan een zinvolle, beschrijvende commit message.

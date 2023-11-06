@@ -44,8 +44,9 @@ gevraagd om de technische schuld af te lossen
 die is opgebouwd tijdens het experiment.
 
 We benaderen het probleem van verschillende hoeken:
-*maintainability*, *security*, *performance* en *operations*.
-En elke keer bekijken we de staat van het systeem,
+*maintainability*, *security*, *performance* en *operations*. Deze komen overeen met de vier pijlers uit ISO25010-model, dat we nog kennen uit CISQ1.
+Per opdracht kijk je naar een andere pijler, waarbij er opgemerkt moet worden dat we dit onderwerk niet uitputtend kunnen behandelen.
+Per opdracht bekijken we elke keer vanuit een andere invalshoek de staat van het systeem,
 bedenken we wat er beter kan en voeren we deze door
 of geven we advies.
 
