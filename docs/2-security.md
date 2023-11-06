@@ -82,15 +82,8 @@ Commit en push je werk. Draait dit ook in de pipeline? Slaagt alles nog?
 Denk aan een zinvolle, beschrijvende commit message.
 
 ### Stap 5. Reflecteer
-
-Rufus, product owner, geeft tijdens een Scrum backlog-sessie aan
-dat we binnenkort ook XML-bestanden moeten ondersteunen
-om kandidaten en stemmen in te voeren. Mogelijk dat er in de toekomst
-zelfs nog meer andere file formats nodig zijn voor de importeer-functionaliteit.
-
-Waar moeten qua security we opletten wanneer we XML en andere file formats
-toevoegen aan het project? Bekijk de OWASP top 10.
-Noteer wat je ideeën zijn hierover in `docs/2-notes.md`.
+Wat voor gevolgen zijn er voor maintainability wanneer we bovenstaande security fixes toepassen? Beschrijf eventuele trade-offs in eigen woorden. Gebruik van generatieve AI is voor dit gedeelte verboden.
+Noteer wat je ideeën zijn hierover in `docs/2-notes.md`. Maak een coherent en goedlopend verhaal.
 Vermeld gebruikte bronnen!
 
 Commit en push je werk.

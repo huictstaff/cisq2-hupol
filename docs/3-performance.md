@@ -379,7 +379,9 @@ Beschrijf in je `docs/3-notes.md` of je deze uitkomst had verwacht.
 Verklaar het resultaat.
 
 ### Stap 8. Reflecteer
+Wat voor gevolgen zijn er voor maintainability en security wanneer we bovenstaande performance upgrades toepassen? Beschrijf eventuele trade-offs in eigen woorden. Gebruik van generatieve AI is voor dit gedeelte verboden.
 
+### Stap 9. Toekomstige upgrades
 Je bent waarschijnlijk nog niet tevreden met het systeem
 en de performance ervan. Van welke andere systeemonderdelen 
 zou je de performance willen of kunnen verbeteren?
@@ -388,7 +390,7 @@ Zou je een prestatiewinst kunnen boeken met een andere structuur?
 
 Beschrijf dit in je `docs/3-notes.md`. Vermeld gebruikte bronnen!
 
-**(Optioneel)**: Probeer de performance verder te verbeteren
+**(Optioneel voor extra punten)**: Probeer de performance verder te verbeteren
 door te meten, de resultaten te analyseren, verbeteringen te zoeken
 ten slotte deze te implementeren.
 

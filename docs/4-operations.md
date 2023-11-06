@@ -248,13 +248,12 @@ Daarom maken we gebruik van een andere (gratis) service.
 
 > Mocht je toch
 > willen deployen op een andere cloud provider dan mag dat,
-> de instructies zullen daar niet helemaal op aansluiten.
+> de instructies zullen daar niet helemaal op aansluiten. 
+> Via de HU worden er Visual Studio Azure Cloud subscriptions aangeboden, echter slechts in beperkte mate.
 
 Voor deze opdracht maken we gebruik van Render.com,
 omdat zij gratis Docker-gebaseerde hosting hebben met
 GitHub-integratie en daarnaast PostgreSQL-instances aanbieden.
-Voorheen konden we gebruik maken van Heroku, maar
-die bieden geen gratis service meer.
 
 De gratis service is wel erg traag, zowel qua
 hosting als qua build, maar het is fijn om iets
