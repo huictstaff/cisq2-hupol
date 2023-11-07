@@ -235,7 +235,7 @@ Voor Render volg de volgende stappen:
 (genereer database en wachtwoord automatisch, region EU)
 3. Maak een nieuwe web service aan (`hupol`)
 4. Koppel je GitHub repository
-5. Kies de `main` branch. Het kan netter zijn om een `deploy`-branch hiervoor aan te maken, maar dit hoeft niet (hangt van je Git-strategie af)
+5. Kies de `main` branch. Het kan netter zijn om een `deploy`-branch hiervoor aan te maken, maar dit hoeft niet (hangt van je Git-strategie af). Zorg dat je workflow file een docker image build!
 
 Als het goed is zie je meteen de deployment
 lopen. Onze code wordt gecloned en een Docker
