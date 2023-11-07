@@ -227,103 +227,15 @@ De gratis service is wel erg traag, zowel qua
 hosting als qua build, maar het is fijn om iets
 te hebben om mee te oefenen.
 
-#### A. Beperkingen Render.com
-
-In een ideale wereld zouden we een CI-pipeline hebben 
-die onze code test en static analysis uitvoert
-en, zodra alles slaagt, een docker image produceert
-en opslaat in een registry. Ons hosting platform zou
-dan slechts integreren met die registry 
-en een image pullen wanneer een deployment gewenst is.
-
-Helaas is dit [nog niet mogelijk op *render.com*](https://feedback.render.com/features/p/deploy-docker-images-from-public-private-registries).
-Ze bouwen steeds zelf een image op basis 
-van de Dockerfile die we meeleveren.
-
-Om die reden kunnen we werken met een deploy-branch waar
-we alleen onze JAR in zetten. We laten render.com luisteren
-naar deze branch zodat ze, bij veranderingen, een docker
-image en container bouwen en deployen op hun platform.
-
-#### B. Deployment pipeline met GitHub Actions
-
-Na een succesvolle build op main (met static analysis en tests)
-kunnen we ervoor zorgen dat
-de resulterende JAR en de Dockerfile worden 
-gecommit op de *deploy* branch. 
-Render.com ziet dan dat er iets is geupdatet 
-en bouwt en deployt de container.
-
-Zorg dat onze GitHub Actions na static analysis en
-tests de JAR en de Dockerfile commit op een branch genaamd
-`deploy`. Je mag hier een community action voor gebruiken,
-maar je kan ook het volgende doen.
-
-We hebben een Personal Access Token nodig om te pushen naar
-een branch binnen onze GitHub Actions pipeline. Dit is vanwege
-security-redenen. Dat kunnen we als volgt doen:
-1. Ga naar de instellingen van je GitHub-account 
-en klik op "Developer-settings" -> "Personal Access Tokens" -> "Generate New Token".
-2. Zorg voor een lange geldigheid (liever niet oneindig i.v.m. security)
-3. Geef je token een naam en selecteer de benodigde toestemmingen (read + write voor Content).
-4. Klik op "Generate Token" en kopieer het token 
-naar je klembord.
-5. Ga naar de instellingen van je CISQ2-repository en 
-klik op "Secrets and Variables" -> "Actions"
-6. Maak een nieuwe secret aan: "New repository secret"
-7. Geef je secret een naam (bijvoorbeeld ACCESS_TOKEN) en 
-plak het gekopieerde token in het "Waarde"-veld.
-9. Klik op "Add secret"
-
-Nu kunnen we de secret gebruiken binnen onze pipeline.
-Wijzig je GitHub Actions pipeline. Als je er nog 
-geen een hebt, maak er dan één voor een Java/Maven 
-project.
-
-In de pipeline willen we een stap toevoegen na alle
-tests en checks om alle JARs uit target mee te committen
-naar een nieuwe branch 
-(aangepast van [StackOverflow]()):
-```yml
-    - name: Push to deploy branch
-      run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
-          git fetch
-          git checkout -b deploy || true
-          git add --force target/*.jar
-          git commit -am "Automated: prepare deployment" 
-          git push --force --set-upstream origin deploy
-```
-
-We moeten er wel voor zorgen dat onze eerdere `actions/checkout`
-stap gebruik maakt van de Personal Access Token die we eerder hebben
-gegenereerd en via secrets meegeven. 
-Vervang deze eerste stap met de volgende:
-```yml
-    - uses: actions/checkout@v3
-      with:
-        token: ${{ secrets.ACCESS_TOKEN }}
-```
-
-Als dit is gelukt moeten we een groen vinkje bij onze
-GitHub Action zien en een nieuwe branch "deploy" op
-onze GitHub Repository. We hebben nu een continuous
-delivery-achtige setup waarbij alles wat op deploy
-staat *klaar* is voor deployment.
-
-#### C. Deployment met Render.com
-
-We hebben een deployment branch gemaakt. Nu kunnen
-we met ons hosting platform aan de slag.
-Volg de volgende stappen:
+#### A. Deployment met Render.com
+Voor Render volg de volgende stappen:
 
 1. Maak een account op Render.com
 2. Maak een database instantie (`hupol-db`) aan
 (genereer database en wachtwoord automatisch, region EU)
-3. Maak een nieuwe service aan (`hupol`)
+3. Maak een nieuwe web service aan (`hupol`)
 4. Koppel je GitHub repository
-5. Kies de `deploy` branch
+5. Kies de `main` branch. Het kan netter zijn om een `deploy`-branch hiervoor aan te maken, maar dit hoeft niet (hangt van je Git-strategie af)
 
 Als het goed is zie je meteen de deployment
 lopen. Onze code wordt gecloned en een Docker
@@ -377,7 +289,7 @@ te staan.
 
 ### Stap 5. Een native container maken (extra/optioneel)
 
-In stap 2 hebben we met de hand een container gemaakt
+In stap 3 hebben we met de hand een container gemaakt
 aan de hand van een Dockerfile en een JAR in de target
 directory.
 
