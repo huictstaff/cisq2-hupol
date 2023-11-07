@@ -46,7 +46,18 @@ en hoe het verschilt van een Docker image.
 En: zijn een virtual machine en een Docker container
 hetzelfde?
 
-### Stap 2. Een JAR container maken
+### Stap 2. Jar builden
+Laten we eerst eens kijken hoe we *zonder Docker*
+onze applicatie kunnen starten met de commandline:
+
+1. Zorg dat we de database kunnen (`docker-compose up`)
+2. Compileer de code (`mvn compile` of `./mvnw compile`)
+3. Run de jar (`java -jar .\target\hupol-0.0.1-SNAPSHOT.jar`)
+
+Als het goed is, start de applicatie nu op.
+Je kan de applicatie weer stoppen met `CTRL + C`.
+
+### Stap 3. Een JAR container maken
 De manier om van welke applicatie dan ook een
 Docker image te maken is door een 
 [Dockerfile](https://docs.docker.com/engine/reference/builder/)
@@ -66,89 +77,41 @@ de basisbenodigdheden inzitten. Voor uitleg van Docker zelf kijk [hier](https://
 
 Uiteindelijk heb je een dockerfile met daarin:
 1. `FROM` met Java 17 JDK + tag
-2. `RUN` commandos
-3. `Copy` de gecompileerde JAR
-4. `Entrypoint` opties
-In je `Dockerfile` kan je het basisimage aangeven
-met de [`FROM <image>:<tag>` instructie](https://docs.docker.com/engine/reference/builder/#from). 
+2. `COPY` de gecompileerde JAR kopiëren
+3. `RUN` commandos
+4. `ENTRYPOINT` opties
 
-Maar wat moet onze basisimage zijn? In ons geval
-is dat een minimaal operating system met een
+#### Extra uitleg per stap
+1. Basisimage: een minimaal operating system met een
 ingebakken Java Runtime Environment (JRE)
-of een Java Development Kit (JDK).
+of een Java Development Kit (JDK). Deze kan je vinden op een Docker Image Registry, zoals
+[Docker Hub](https://hub.docker.com/).  Laten we kiezen voor Java `17-jdk` met als platform een minimaal Linux operating system (`alpine`). 
+Deze *tag* je met een versienummer en het gewenste platform. De tag is dan in dit geval: `17-jdk-alpine`.
 
-Deze kan je vinden op een Docker Image Registry, zoals
-[Docker Hub](https://hub.docker.com/). 
-Ga naar de site van Docker Hub en 
-zoek op "openjdk". Wij willen een distributie gebruiken
-die geschikt is voor productie, zoals de images
-van `eclipse-temurin`.
-
-Nu we een image-naam hebben, moeten we ook een 
-*tag* aangeven. 
-Met een tag worden verschillende varianten
-aangeduid van dezelfde image, vaak met een versienummer 
-en ook het gewenste platform.
-Deze komt achter de imagenaam te staan
-na een dubbele punt: `FROM image:tag`.
-
-Laten we kiezen voor Java `17-jdk` met als platform
-een minimaal Linux operating system (`alpine`).
-De tag is dan in dit geval: `17-jdk-alpine`.
-
-Schrijf de `FROM` instructie 
-op de eerste regel van onze `Dockerfile`.
-
-#### B. De applicatie in de image opnemen
-
-Wanneer we met Maven onze applicatie compileren
+2. Wanneer we met Maven onze applicatie compileren
 (bijv. `mvn compile`), 
-komen de resultaten in een `target`
-directory te staan. Voor onze Java-applicatie
-is vooral de Java Archive (`.jar`) van belang.
-Dit wordt door de Java Virtual Machine (JVM)
+komen de resultaten (`.jar` voor Java) in een `target`
+directory te staan. Dit wordt door de Java Virtual Machine (JVM)
 uitgelezen en omgezet in voor onze computer 
-uitvoerbare code.
-
-Wanneer we Docker onze container image laten
+uitvoerbare code. Wanneer we Docker onze container image laten
 bouwen, willen we dit `.jar` bestand in de 
 image overnemen. Dit kunnen we doen met de
 [`COPY` command](https://docs.docker.com/engine/reference/builder/#copy). Deze instructie ontvangt twee
 argumenten: de bron (op onze host machine) 
-en de target (in de docker container).
-
-Voeg een witregel toe en schrijf de `COPY` instructie
+en de target (in de docker container). Voeg een witregel toe en schrijf de `COPY` instructie
 op de volgende regel van onze `Dockerfile`, geef de target 
 de naam `app.jar`.
+3. `RUN` is bijvoorbeeld handig wanneer je een directory wilt aanmaken
 
-#### C. Het startcommando aangeven
-
-We hebben een basisimage toegevoegd met `FROM`
-en onze benodigdheden meegegeven met `COPY`.
-Nu moeten we aangeven hoe de applicatie opgestart
-kan worden zodra Docker de image opstart.
-Dit doen we met de 
-[`ENTRYPOINT` instructie](https://docs.docker.com/engine/reference/builder/#entrypoint).
-
-Laten we eerst eens kijken hoe we *zonder Docker*
-onze applicatie kunnen starten met de commandline:
-
-1. Zorg dat we de database kunnen (`docker-compose up`) 
-2. Compileer de code (`mvn compile` of `./mvnw compile`)
-3. Run de jar (`java -jar .\target\hupol-0.0.1-SNAPSHOT.jar`) 
-
-Als het goed is, start de applicatie nu op. 
-Je kan de applicatie weer stoppen met `CTRL + C`.
-
-Laten we nu hetzelfde doen in onze `ENTRYPOINT`.
+4. Het startcommando aangeven zodra Docker de image opstart.
+Dit doen we door de [`ENTRYPOINT` instructie](https://docs.docker.com/engine/reference/builder/#entrypoint) toe te voegen aan de `Dockerfile`.
 Een entrypoint schrijf je meestal in array-notatie
 (de *exec form*) in plaats van een regel text.
 `ENTRYPOINT [command, parameter1, parameter2, ...]`
+Schrijf eerst weer een witregel en voeg dan een `ENTRYPOINT` aan de Dockerfile toe. 
+Parameters en commando's staan tussen "".
 
-Schrijf eerst weer een witregel 
-en voeg dan een `ENTRYPOINT` aan de Dockerfile toe.
-
-#### D. Bouw de image
+#### B. Bouw de image
 
 We kunnen nu een image bouwen door `docker build`
 in de commandline te gebruiken. We moeten wel specificeren
@@ -169,15 +132,16 @@ Met `docker image ls` kan je kijken welke docker
 images je allemaal op je computer hebt staan.
 Dit zijn er misschien meer dan je denkt!
 
-#### E. Een container configureren en draaien
+#### C. Een container configureren en draaien
 
 Laten we een container opstarten van de image die we 
 net hebben aangemaakt:
 ```bash
 docker run -it hupol/basic
 ```
+De parameter `--name` gebruiken kan ook wanneer je je container een vaste naam wilt geven.
 
-Wanneer je dit uitvoert, zul je zien dat er een error te zien is.
+Wanneer je deze bash uitvoert, zul je zien dat er een error te zien is.
 Na een boel scrollen, zie je:
 ```
 org.postgresql.util.PSQLException: Connection to localhost:15432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
@@ -244,7 +208,7 @@ Gelukt?
 Commit en push je werk.
 Denk aan een zinvolle, beschrijvende commit message.
 
-### Stap 3. Deployment
+### Stap 4. Deployment
 
 Uiteindelijk willen we een bekende cloud-aanbieder gebruiken.
 AWS, GCP en Azure vragen echter om een credit card. 
@@ -411,7 +375,7 @@ continuous deployment-setup.
 Alles dat op deploy staat komt automatisch live
 te staan.
 
-### Stap 4. Een native container maken (extra/optioneel)
+### Stap 5. Een native container maken (extra/optioneel)
 
 In stap 2 hebben we met de hand een container gemaakt
 aan de hand van een Dockerfile en een JAR in de target
