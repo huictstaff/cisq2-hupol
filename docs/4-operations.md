@@ -333,7 +333,7 @@ Als alternatief kan je ook de Docker desktop GUI gebruiken.
 
 Maar werkt deze nieuwe image ook?
 Probeer weer het laatste commando uit
-van stap 2, maar nu met deze container.
+van stap 3, maar nu met deze container.
 Valt je iets op aan de opstarttijd?
 
 Gelukt? Neem een screenshot van je `docker image ls` output
