@@ -21,7 +21,7 @@ Jimothy, de lead developer van Husky Martian Political Systems,
 heeft ons om een *maintainability-onderzoek* gevraagd.
 
 Ons is verzocht kritisch naar 
-de `votes` en `candidates` components te kijken, 
+de `votes`, `results` en `candidates` components te kijken, 
 eventuele *code smells* te verwijderen 
 en de architectuur waar nodig te herstellen.
 Hierbij maken we gebruik van *static analysis tools*,
@@ -35,7 +35,7 @@ Wat zijn de verantwoordelijkheden van de verschillende components?
 Hoe zit de structuur in elkaar volgens de *intended architecture*?
 
 Bekijk daarna de code van
-de `votes` en `candidates` components. Let ook op
+de `votes`, `results` en `candidates` components. Let ook op
 de tests. Kan je de tests draaien en het project 
 werkend krijgen? Vergeet niet `docker-compose up` te draaien
 (bekijk de docker-compose.yml en de verschillende .properties-bestanden
@@ -88,7 +88,7 @@ Kies een of meer tools, kies een passende codestyle
 (bijvoorbeeld die van Google), lees de documentatie(!) en
 neem de tool op in het project via Maven (zoek naar een Maven plugin).
 
-Schoon vervolgens de code op van bestaande klassen binnen `candidates` en `votes`.
+Schoon vervolgens de code op van bestaande klassen binnen `votes`, `results` en `candidates`.
 Kijk ook naar de test code.
 Richt je hierbij op clean en declarative code, 
 bijvoorbeeld door gebruik te maken van Java-features 
@@ -105,7 +105,7 @@ je IDE, een generatieve AI (ChatGPT, Bing, etc.) of welke andere truc dan ook.
 Schrijf wel op wat je hebt gedaan (in `notes-1.md`)  
 en wees kritisch op de uitkomst. Vermeld gebruikte bronnen!
 
-> ❗ Je hoeft alleen de `votes` en de `candidates` components
+> ❗ Je hoeft alleen de `votes`, `results` en `candidates` components
 te verbeteren (je zou voor de andere components 
 > *excluded* of *ignore* regels kunnen opnemen).
 > 
@@ -163,7 +163,7 @@ mag je voor nu negeren.
 
 Kan jij hier een oplossing voor verzinnen?
 
-Refactor de structuur van de `candidates` en `votes` components 
+Refactor de structuur van de `votes`, `results` en `candidates` components 
 zodat dit mogelijk wordt. Kijk ook naar de tests. Misschien zouden we nog wel meer
 moeten refactoren, maar we beginnen klein, denk aan de
 [Strangler Fig pattern](https://martinfowler.com/bliki/StranglerFigApplication.html).
