@@ -13,12 +13,9 @@
 > every file when needed!
 
 ## De opdracht
-Het plan is om Hupol op termijn op grote schaal uit te rollen.
-Sana wil daarom dat Husky Martian Political Systems moderne cloud infrastructuur 
-gebruikt, zoals Amazon Web Services (AWS), Microsoft Azure of 
-Google Cloud Platform (GCP). 
-
-Dit soort cloud platforms maakt vaak gebruik
+Het plan is om Hupol op termijn op grote schaal uit te rollen. 
+Cloud platforms als Amazon Web Services (AWS), Microsoft Azure of
+Google Cloud Platform (GCP) maken vaak gebruik
 van [containers](https://www.docker.com/resources/what-container/). 
 Een container is een abstractie om 
 software te kunnen benaderen op een gelijkvormige manier,
@@ -35,7 +32,7 @@ tussen verschillende omgevingen,
 zoals lokale machines en cloudomgevingen, waardoor compatibiliteit
 tussen development en productie kan worden vergroot.
 
-Ons is gevraagd de applicatie om geschikt te maken om te draaien
+Maak de applicatie geschikt om te draaien
 in zo'n omgeving.
 
 ### Stap 1. Bestudeer het materiaal
@@ -61,9 +58,7 @@ Je kan de applicatie weer stoppen met `CTRL + C`.
 De manier om van welke applicatie dan ook een
 Docker image te maken is door een 
 [Dockerfile](https://docs.docker.com/engine/reference/builder/)
-te schrijven. Het maakt hiervoor niet uit of je 
-applicatie in Java is geschreven of bijvoorbeeld
-Node.js of PHP: in een Dockerfile definieer je 
+te schrijven. In een Dockerfile definieer je 
 wat er in de container zit en hoe deze benaderd kan
 worden.
 
@@ -122,27 +117,18 @@ docker build -t hupol/basic .
 ```
 
 Het puntje (`.`) geeft aan dat de Dockerfile in de huidige directory
-is te vinden, terwijl je met `-t` de tag aangeven. 
-
-Dit duurt even, omdat Docker de onderdelen van de benodigde base
-image moet binnenhalen en vervolgens de instructies in de Dockerfile
-uitvoert.
+is te vinden, terwijl je met `-t` de tag aangeven.
 
 Met `docker image ls` kan je kijken welke docker 
 images je allemaal op je computer hebt staan.
-Dit zijn er misschien meer dan je denkt!
 
 #### C. Een container configureren en draaien
-
-Laten we een container opstarten van de image die we 
-net hebben aangemaakt:
 ```bash
 docker run -it hupol/basic
 ```
 De parameter `--name` gebruiken kan ook wanneer je je container een vaste naam wilt geven.
 
-Wanneer je deze bash uitvoert, zul je zien dat er een error te zien is.
-Na een boel scrollen, zie je:
+Wanneer je deze bash uitvoert zie je:
 ```
 org.postgresql.util.PSQLException: Connection to localhost:15432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
 ```
@@ -167,7 +153,7 @@ niet onze `application.properties` file wijzigen!
 
 Spring Boot staat toe om instellingen te overschrijven via
 environment variabelen. Dit is in lijn met de ideeën van de
-[12 factor app](https://12factor.net/config)! 
+[12 factor app](https://12factor.net/config)
 
 We kunnen bij het runnen van een Docker
 container deze omgevingsvariabelen meegeven met `--env` of `-e`.
@@ -287,6 +273,13 @@ continuous deployment-setup.
 Alles dat op deploy staat komt automatisch live
 te staan.
 
+> Een alternatieve manier is gebruik te maken van een Renders image registry.
+>
+> Dan zouden we een image builden in onze CI-omgeving
+> en, deze opslaan in bijvoorbeeld GitHub's private
+> image registry en *render.com* deze laten pullen.
+
+
 ### Stap 5. Een native container maken (extra/optioneel)
 
 In stap 3 hebben we met de hand een container gemaakt
@@ -338,14 +331,6 @@ Valt je iets op aan de opstarttijd?
 
 Gelukt? Neem een screenshot van je `docker image ls` output
 of je Docker images overview van Docker desktop op in `docs/4-notes.md`.
-
-> Het zou mooi zijn als we deze native image ook konden
-> deployen. Helaas is het [nog niet mogelijk op *render.com*](https://feedback.render.com/features/p/deploy-docker-images-from-public-private-registries)
-> gebruik te maken van een image registry.
-> 
-> Dan zouden we een image builden in onze CI-omgeving
-> en, deze opslaan in bijvoorbeeld GitHub's private
-> image registry en *render.com* deze laten pullen.
 
 Commit en push je werk.
 Denk aan een zinvolle, beschrijvende commit message.
