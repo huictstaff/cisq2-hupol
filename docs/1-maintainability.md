@@ -53,7 +53,7 @@ Denk aan een zinvolle, beschrijvende commit message.
 ### Stap 3. Voeg een build pipeline toe
 
 Gebruik hiervoor
-[GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven).
+[GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven). Haak PMD (zie hieronder) in op de maven lifecycle.
 
 ### Stap 4. Schoon de code op
 

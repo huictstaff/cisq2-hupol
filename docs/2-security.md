@@ -12,17 +12,14 @@
 > A small price to pay for democratizing the galaxy, don't you agree?"
 
 ## De opdracht
-Wat een grote ambities! Het is belangrijk dat zo'n applicatie
-goed beveiligd is. Daarom is ons gevraagd om kritisch naar
-te kijken naar de `security` component, maar ook de rest van het project.
+Kijk kritisch naar naar de `security` component, maar ook de rest van het project.
 Bevindingen, risico's en bedenkingen schrijven we op. Verbeteringen voeren we door.
 Hierbij maken we, waar mogelijk, gebruik van *static analysis tools*.
 
 
 ### Stap 1. Bestudeer de code en het materiaal
 
-Bekijk de code van de security-component,
-lees de opdracht door en doorgrond het lesmateriaal.
+Bekijk de code van de security-component, lees de opdracht door en doorgrond het lesmateriaal.
 
 Waar moeten we op letten wanneer het over web security gaat?
 Wat zijn veelvoorkomende problemen? Hoe kan je deze oplossen?
@@ -37,16 +34,14 @@ wat betreft de code van de `security` component. Denk hierbij aan de
 de [CIA-triad](https://www.fortinet.com/resources/cyberglossary/cia-triad)
 en eventuele ethische of juridische overwegingen die je hebt
 bij dit project.
-Licht beweringen toe en vermeld gebruikte bronnen.
-
-Dat kan je doen in een nieuw markdown-bestand
-(bijvoorbeeld `docs/2-notes.md`).
+Licht beweringen toe en vermeld gebruikte bronnen. Maak een nieuw markdown-bestand
+`docs/2-notes.md`. Schrijf op of een securityrisico mogelijk kritisch is.
 
 Bekijk bijvoorbeeld ook hoe Spring omgaat met
 [security](https://spring.io/guides/topicals/spring-security-architecture/)
 [authentication](https://www.baeldung.com/spring-security-basic-authentication)
 en [authorization](https://www.baeldung.com/role-and-privilege-for-spring-security-registration).
-Hoe is dat in dit project geregeld? Kijk in de code, de tests, de database en de docs.
+Hoe is dat in dit project geregeld? Kijk in de code, de tests, de database en de docs. Er zijn ongeveer 35 zaken te vinden, waarvan 10 kritisch
 
 Commit en push je werk.
 Denk aan een zinvolle, beschrijvende commit message.
@@ -54,9 +49,7 @@ Denk aan een zinvolle, beschrijvende commit message.
 ### Stap 3. Automatische security check
 
 Voer een automatische analyse uit met [Snyk](https://snyk.io/).
-Van oorsprong is Snyk een dependency checker die aangeeft welke dependencies er worden gebruikt met bekende kwetsbaarheden.
-Later is hier Static Analysis Security Tests (SAST) tegenaan geplakt. Om dit te gebruiken moet je dit wel eerst aanzetten via de webinterface.
-
+Om Static Analysis Security Tests (SAST)-gedeelte te gebruiken moet je dit  eerst aanzetten via de webinterface.
 Je kan de command line interface (CLI) gebruiken om Snyk te draaien, aan te raden is om deze via npm te installeren.
 Voor de dependencies wordt `snyk test` gebruikt, voor SAST wordt `snyk code test` gebruikt.
 Om een rapportje in de webinterface te tonen kun je `snyk monitor` gebruiken.
@@ -75,10 +68,9 @@ Pas de `security` component aan waar nodig om de security te verbeteren.
 Voer niet alleen de verbeteringen door die uit de geautomatiseerde
 security analysis is gekomen, maar ook wat je zelf denkt dat beter kan.
 
-Je kan hier ook gebruik maken van generatieve AI en andere bronnen.
-Maak hier een notitie van in `docs/2-notes.md`, anders is het mogelijk plagiaat.
+Maak een notitie van bronnen in `docs/2-notes.md`, anders is het mogelijk plagiaat.
 
-Commit en push je werk. Draait dit ook in de pipeline? Slaagt alles nog?
+Commit en push je werk. Draait dit ook in de pipeline? Slaagt alles nog? Haak Synk in op de maven lifecycle.
 Denk aan een zinvolle, beschrijvende commit message.
 
 ### Stap 5. Reflecteer
