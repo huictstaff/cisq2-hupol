@@ -19,20 +19,13 @@ klanten de software waarderen:
 wie heeft het geduld om te wachten op langzame software?
 Bovendien betekent efficiënte code dat kan worden
 bespaard op hardware en energiekosten.
-Op Mars (en op Aarde) is dat geen overbodige luxe!
 
 De functionaliteit van Hupol lijkt te werken, 
 dat blijkt uit de unit en integration tests. 
 Maar werkt het nog zo soepel met meer data? 
 
-Daar wil Jimothy,
-de lead developer van Husky Martian Political Systems, 
-graag meer over weten. De applicatie zal uiteindelijk
-de resultaten laten zien van allerlei verkiezingen en
-peilingen van soms wel *honderden miljoenen* stemmen!
-
-Daarom wordt ons gevraagd om de prestaties van 
-de applicatie te evalueren en te verbeteren. Hier
+Evaluaeer en verbeter de prestaties van 
+de applicatie. Hier
 kunnen we onze kennis inzetten over *algoritmische
 complexiteit*, *prestatiemetrieken* en *performance testing*.
 
@@ -159,12 +152,8 @@ Voer stap 3B uit, maar met de nieuwe data. Wat valt je op.
 Maak weer een screenshot en neem deze in je docs op (`docs/perf-ab-2`) met file-extensie.
 
 ### Stap 4. Experimenteer met een Java benchmark
-De lead developer, Jimothy, vindt het spannend om 
-de code aan te passen: "Het werkt toch? *Never change a winning team!*" 
-Wel is hij een groot voorstander van *declarative code*. 
-
-Hij denkt dat we met Java Streams een 
-performance-winst kunnen halen. 
+Zou er met Java Streams een 
+performance-winst behaald kunnen worden? . 
 Misschien kunnen we zelfs de [parallel-methode](https://www.baeldung.com/java-when-to-use-parallel-stream) 
 gebruiken...
 
@@ -341,10 +330,6 @@ Denk aan een zinvolle, beschrijvende commit message.
 
 We hebben het algoritme verbeterd, maar zijn nog niet helemaal tevreden.
 Het probleem zit op een fundamenteler niveau!
-Sana, de architect, is het met ons eens en geeft ons groen licht
-om de boel eens flink onder handen te nemen. Al is het alleen 
-maar om te zien wat het ons oplevert.
-
 Optimaliseer de *results* component en betrek daar ook de database bij.
 
 Je kan bijvoorbeeld een 
@@ -394,5 +379,5 @@ Beschrijf dit in je `docs/3-notes.md`. Vermeld gebruikte bronnen!
 door te meten, de resultaten te analyseren, verbeteringen te zoeken
 ten slotte deze te implementeren.
 
-Gebruik eventueel zoekmachines en chatbots voor inspiratie, inzicht en advies.
+Gebruik eventueel zoekmachines voor inspiratie, inzicht en advies.
 Blijf wel rekening houden met de andere kwaliteitsaspecten!
