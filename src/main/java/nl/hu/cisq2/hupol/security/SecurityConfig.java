@@ -8,15 +8,24 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
+import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
 @EnableWebSecurity
 @EnableMethodSecurity(jsr250Enabled = true)
@@ -32,42 +41,36 @@ public class SecurityConfig {
     private Integer jwtExpirationInMs;
 
     @Bean
-    public SecurityFilterChain configure(
-            HttpSecurity http,
-            AuthenticationService service,
-            AuthenticationManager authenticationManager
-    ) throws Exception {
-        var authenticationFilter =
-                new JwtAuthenticationFilter(LOGIN_PATH, jwtSecret, jwtExpirationInMs, service);
-        var authorizationFilter =
-                new JwtAuthorizationFilter(jwtSecret, authenticationManager);
+    protected AuthenticationManager authenticationManager(final PasswordEncoder passwordEncoder, final UserDetailsService userDetailsService) {
+        final DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(passwordEncoder);
+        return new ProviderManager(provider);
+    }
 
-        return http
-                .csrf().disable()
-                .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.POST, REGISTER_PATH).permitAll()
-                .requestMatchers(HttpMethod.POST, LOGIN_PATH).permitAll()
-                .requestMatchers("/error").anonymous()
-                .anyRequest().authenticated()
-                .and()
-                .addFilterBefore(
-                        authenticationFilter,
-                        UsernamePasswordAuthenticationFilter.class
+    @Bean
+    protected SecurityFilterChain filterChain(final HttpSecurity http, final AuthenticationService authenticationService, final AuthenticationManager authenticationManager ) throws Exception {
+        http.cors(Customizer.withDefaults())
+                .csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(antMatcher(POST, REGISTER_PATH)).permitAll()
+                        .requestMatchers(antMatcher(POST, LOGIN_PATH)).permitAll()
+                        .requestMatchers(antMatcher("/error")).anonymous()
+                        .anyRequest().authenticated()
                 )
-                .addFilter(authorizationFilter)
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .build();
+                .addFilterBefore(new JwtAuthenticationFilter(
+                        LOGIN_PATH,
+                        jwtSecret,
+                        jwtExpirationInMs,
+                        authenticationService
+                ), UsernamePasswordAuthenticationFilter.class)
+                .addFilter(new JwtAuthorizationFilter(jwtSecret, authenticationManager))
+                .sessionManagement(s -> s.sessionCreationPolicy(STATELESS));
+        return http.build();
     }
 
     @Bean
-    public PasswordEncoder encoder() {
+    protected PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-        return config.getAuthenticationManager();
     }
 }
