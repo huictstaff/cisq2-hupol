@@ -7,6 +7,8 @@ import nl.hu.cisq2.hupol.security.domain.User;
 import nl.hu.cisq2.hupol.security.domain.UserProfile;
 import nl.hu.cisq2.hupol.security.domain.exception.UserAlreadyExists;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,7 +16,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class AuthenticationService {
+public class AuthenticationService implements UserDetailsService {
     private final UserRepository userRepository;
 
     public AuthenticationService(UserRepository userRepository) {
@@ -45,5 +47,10 @@ public class AuthenticationService {
         this.userRepository.save(user);
 
         return new UserProfile(user.getUsername(), user.getAuthorities());
+    }
+    @Override
+    public User loadUserByUsername(String username) {
+        return this.userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException(username));
     }
 }
