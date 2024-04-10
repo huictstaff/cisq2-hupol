@@ -53,7 +53,7 @@ Denk aan een zinvolle, beschrijvende commit message.
 ### Stap 3. Voeg een build pipeline toe
 
 Gebruik hiervoor
-[GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven). Haak PMD (zie hieronder) in op de maven lifecycle.
+[GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven). Haak PMD (zie hieronder) in op de maven lifecycle. Gebruik maven verify en skip geen tests.
 
 ### Stap 4. Schoon de code op
 
@@ -67,8 +67,9 @@ Maak voor deze opdracht gebruik van [PMD](https://docs.pmd-code.org/latest/)
 
 [//]: # (* [Infer]&#40;https://fbinfer.com/&#41; )
 
-1. Kies een passende codestyle (bijvoorbeeld die van Google), lees de documentatie(!) en
-neem de tool op in het project via Maven (zoek naar een Maven plugin).
+1. Kies een passende codestyle (bijvoorbeeld die van Google), lees de documentatie(!) van PMD en
+neem de tool op in het project via Maven (zoek naar een Maven plugin). Neem PMD op in de test lifecycle van Maven. 
+Zorg dat het minstens de cyclomatische complexiteit meet.
 
 2. Schoon vervolgens de code op van bestaande klassen binnen `votes`, `results` en `candidates`.
 Kijk ook naar de test code. Richt je hierbij op clean en declarative code, 
@@ -87,6 +88,7 @@ en wees kritisch op de uitkomst. Vermeld gebruikte bronnen!
    Wie beheert zijn informatie en hoe komt een pacakage aan informatie die diegene nodig heeft?
    Bedenk welke (nieuwe) klassen er nodig zijn en teken eventueel een domeinmodel uit voor jezelf.
    Je mag het hele project inclusief alle tests aanpassen, maar let erop dat alle tests uiteindelijk weer slagen! (dus comment geen tests uit)
+6. Beschrijf wat je hebt gedaan. Hoe is de accidental complexity verminderd? Laat je code zien waarin je dit hebt verbeterd.
 
 > ❗ Je hoeft alleen de `votes`, `results` en `candidates` components
 te verbeteren (je zou voor de andere components 
@@ -98,7 +100,7 @@ te verbeteren (je zou voor de andere components
 Commit en push je werk. 
 Denk aan een zinvolle, beschrijvende commit message.
 
-### Stap 5. archunit
+### Stap 5. Archunit
 Onderzoek de architecturele regels van het hele project
 (welke modules zijn er en hoe mogen ze met elkaar praten)
 en test en verbeter deze met behulp van 
@@ -111,7 +113,7 @@ Zorg hier dat de domeinregels worden toegepast, bijvoorbeeld het dependency inve
 
 Commit en push je werk. Zorg dat je pipeline nog draait
 
-### Stap 6. Refactor de structuur
+### Stap 6. Refactoring voor een XML-parser toevoegen
 Refactor de structuur van de `votes`, `results` en `candidates` components 
 zodat het mogelijk wordt om naast de CSV-parser een XML-parser te gebruiken. Kijk ook naar de tests. Misschien zouden we nog wel meer
 moeten refactoren, maar we beginnen klein, denk aan de
