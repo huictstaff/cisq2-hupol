@@ -40,7 +40,8 @@ verschilt van de *intended architecture*. Je kan ook kijken naar wat je
 bij andere cursussen hebt geleerd over een onderhoudbare structuur
 ([separation of concerns](https://www.arothuis.nl/posts/separation-of-concerns/), 
 [loose coupling](https://en.wikipedia.org/wiki/Loose_coupling), 
-[high cohesion](https://en.wikipedia.org/wiki/Cohesion_(computer_science))).
+[high cohesion](https://en.wikipedia.org/wiki/Cohesion_(computer_science)), 
+[data normaliseren en normaalvormen](https://www.splunk.com/en_us/blog/learn/data-normalization.html)).
 
 Dat kan je doen in een nieuw markdown-bestand
 (bijvoorbeeld onder `docs/1-notes.md`). Vermeld gebruikte bronnen! Plagieer niet van generatieve AI, internetbronnen of je medestudenten.
@@ -88,7 +89,8 @@ en wees kritisch op de uitkomst. Vermeld gebruikte bronnen!
    Wie beheert zijn informatie en hoe komt een pacakage aan informatie die diegene nodig heeft?
    Bedenk welke (nieuwe) klassen er nodig zijn en teken eventueel een domeinmodel uit voor jezelf.
    Je mag het hele project inclusief alle tests aanpassen, maar let erop dat alle tests uiteindelijk weer slagen! (dus comment geen tests uit)
-6. Beschrijf wat je hebt gedaan. Hoe is de accidental complexity verminderd? Laat je code zien waarin je dit hebt verbeterd.
+6. Hoe sla je je gegevens op? Doe je dat volgens een bepaalde normaalvorm?
+7. Beschrijf wat je hebt gedaan. Hoe is de accidental complexity verminderd? Laat je code zien waarin je dit hebt verbeterd.
 
 > ❗ Je hoeft alleen de `votes`, `results` en `candidates` components
 te verbeteren (je zou voor de andere components 
