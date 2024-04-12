@@ -69,7 +69,7 @@ Maak voor deze opdracht gebruik van [PMD](https://docs.pmd-code.org/latest/)
 
 [//]: # (* [Infer]&#40;https://fbinfer.com/&#41; )
 
-1. Kies een passende codestyle (bijvoorbeeld die van Google), lees de documentatie(!) van PMD en
+1. Kies een passende codestyle (standaard PMD volgt de Java Sun), lees de documentatie(!) van PMD en
 neem de tool op in het project via Maven (zoek naar een Maven plugin). Neem PMD op in de test lifecycle van Maven. 
 Zorg dat het minstens de cyclomatische complexiteit meet.
 
