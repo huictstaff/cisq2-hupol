@@ -45,7 +45,8 @@ bij andere cursussen hebt geleerd over een onderhoudbare structuur
 
 Dat kan je doen in een nieuw markdown-bestand
 (bijvoorbeeld onder `docs/1-notes.md`). Vermeld gebruikte bronnen! Plagieer niet van generatieve AI, internetbronnen of je medestudenten.
-Wees grondig in je analyse en denk er niet te makkelijk over! Bekijk de code kritisch en analyseer grondig wat er beter kan.
+Wees grondig in je analyse en denk er niet te makkelijk over! Bekijk de code kritisch en analyseer grondig wat er beter kan. 
+Teken eventueel een domeinmodel uit voor jezelf hoe je deze applicatie zelf zou ontwerpen.
 
 Commit en push je werk.
 Denk aan een zinvolle, beschrijvende commit message.
@@ -85,7 +86,7 @@ gebruikers en developers maken.
 4. Je mag aanvullend  hulp inschakelen die je kunt gebruiken:
 je IDE, of stackoverflow. Schrijf wel op wat je hebt gedaan (in `notes-1.md`)  
 en wees kritisch op de uitkomst. Vermeld gebruikte bronnen!
-5. Maak nieuwe packages en klassen waar nodig (en logisch). Waar liggen de verantwoordelijkheden van packages, hoe praten deze met elkaar?
+5. Maak nieuwe packages en klassen aan, of reduceer, waar nodig (en logisch). Waar liggen de verantwoordelijkheden van packages, hoe praten deze met elkaar?
    Wie beheert zijn informatie en hoe komt een pacakage aan informatie die diegene nodig heeft?
    Bedenk welke (nieuwe) klassen er nodig zijn en teken eventueel een domeinmodel uit voor jezelf.
    Je mag het hele project inclusief alle tests aanpassen, maar let erop dat alle tests uiteindelijk weer slagen! (dus comment geen tests uit)
@@ -104,8 +105,8 @@ Denk aan een zinvolle, beschrijvende commit message.
 
 ### Stap 5. Archunit
 Onderzoek de architecturele regels van het hele project
-(welke modules zijn er en hoe mogen ze met elkaar praten)
-en test en verbeter deze met behulp van 
+(welke modules zijn er en hoe mogen ze met elkaar praten). Zie voor de minimale eisen de `background.md`.
+Test en verbeter het project met behulp van 
 [ArchUnit](https://www.archunit.org/getting-started). Zie voor documentatie
 [use cases](https://www.archunit.org/use-cases),
 [docs](https://www.archunit.org/userguide/html/000_Index.html),

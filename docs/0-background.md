@@ -27,7 +27,7 @@ wil hij voorbereid zijn op het moment dat het zover is:
 > democracy and politics. And we need to be the ones
 > to control it!"
 
-Ondanks de [risico's](https://www.cylumena.com/insights/8-cybersecurity-reasons-online-voting-never-happen/) en [uitdagingen] (https://www.aaas.org/epi-center/internet-online-voting)
+Ondanks de [risico's](https://www.cylumena.com/insights/8-cybersecurity-reasons-online-voting-never-happen/) en [uitdagingen](https://www.aaas.org/epi-center/internet-online-voting)
 van [e-voting](https://www.youtube.com/watch?v=LkH2r-sNjQs) 
 besloot *Husky* het *Hupol* systeem te creëren, 
 een project gericht op buitenaardse digitale verkiezingen. 
@@ -124,11 +124,11 @@ in *lagen*:
 * _domain_: entiteiten die acties aanbieden
 * _data_: uitgang naar externe data-infrastructuur
 
-Hiervoor geldt:
-* elke laag, behalve het domein, mag bij een lager gelegen laag
-* een laag mag lagen overslaan naar beneden
-* elke laag mag bij het domein, maar het domein mag nergens bij
-* components praten met elkaar via hun interfaces
+Hiervoor gelden de volgende communicatieregels:
+* _presentation_: mag alleen naar naar servicelaag communiceren
+* _application>: mag alleen naar andere services, domein en datalaag communiceren
+* _domein_: mag alleen naar de data-laag communiceren
+* Deze relaties mogen niet andersom worden gelegd.
 
 ### Security
 
