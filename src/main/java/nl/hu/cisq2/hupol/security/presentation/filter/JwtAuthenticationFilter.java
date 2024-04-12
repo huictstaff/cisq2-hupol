@@ -49,7 +49,7 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
         this.expirationInMs = expirationInMs;
         this.authenticationService = authenticationService;
     }
-
+    @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException, IOException {
         var credentials =
@@ -60,7 +60,7 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
 
         return new UsernamePasswordAuthenticationToken(userProfile, null, userProfile.authorities());
     }
-
+    @Override
     protected void successfulAuthentication(
             HttpServletRequest request,
             HttpServletResponse response,
