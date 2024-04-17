@@ -127,7 +127,7 @@ in *lagen*:
 Hiervoor gelden de volgende communicatieregels:
 * _presentation_: mag alleen naar naar servicelaag communiceren
 * _application_: mag alleen naar andere services, domein en datalaag communiceren
-* _domein_: mag alleen naar de data-laag communiceren
+* _domein_: mag alleen naar de data-laag communiceren (dmv annotations)
 * Deze relaties mogen niet andersom worden gelegd.
 
 ### Security
