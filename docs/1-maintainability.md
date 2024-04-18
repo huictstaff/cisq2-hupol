@@ -33,7 +33,7 @@ voor de instellingen)
 
 ### Stap 2. Noteer wat er beter kan
 Maak een nette indeling met kopjes in een markdowndocument en schrijf puntsgewijs op wat er volgens jou beter kan
-wat betreft de code van de `votes` en `candidates` components.
+wat betreft de code van de `votes`, `results` en `candidates` components.
 
 Denk hierbij bijvoorbeeld aan *code smells* en hoe de *implemented architecture*
 verschilt van de *intended architecture*. Je kan ook kijken naar wat je
