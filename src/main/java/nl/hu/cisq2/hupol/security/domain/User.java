@@ -1,9 +1,6 @@
 package nl.hu.cisq2.hupol.security.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.hibernate.annotations.NaturalId;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,6 +21,7 @@ public class User implements UserDetails {
     private String password;
 
     @ElementCollection
+    @Enumerated(EnumType.STRING)
     private List<Role> roles = new ArrayList<>();
 
     public User(String username, String password, List<Role> roles) {
