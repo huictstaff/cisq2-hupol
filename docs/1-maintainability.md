@@ -57,7 +57,7 @@ Denk aan een zinvolle, beschrijvende commit message.
 Gebruik hiervoor
 [GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven). Haak PMD (zie hieronder) in op de maven lifecycle in de build. Gebruik maven verify en skip geen tests.
 
-### Stap 4. Schoon de code op
+### Stap 4. Schoon de code op en refactor de architectuur
 
 Maak voor deze opdracht gebruik van [PMD](https://docs.pmd-code.org/latest/)
 
