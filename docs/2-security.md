@@ -48,7 +48,7 @@ Denk aan een zinvolle, beschrijvende commit message.
 
 ### Stap 3. Automatische security check
 
-Voer een automatische analyse uit met [Snyk](https://snyk.io/).
+Voer een automatische analyse uit met [Snyk](https://docs.snyk.io/integrate-with-snyk/snyk-ci-cd-integrations/maven-plugin-integration-with-snyk).
 Om Static Analysis Security Tests (SAST)-gedeelte te gebruiken moet je dit  eerst aanzetten via de webinterface.
 Je kan de command line interface (CLI) gebruiken om Snyk te draaien, aan te raden is om deze via npm te installeren.
 Voor de dependencies wordt `snyk test` gebruikt, voor SAST wordt `snyk code test` gebruikt.
