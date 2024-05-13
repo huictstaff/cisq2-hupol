@@ -49,16 +49,13 @@ Denk aan een zinvolle, beschrijvende commit message.
 ### Stap 3. Automatische security check
 
 Voer een automatische analyse uit met [Snyk](https://docs.snyk.io/integrate-with-snyk/snyk-ci-cd-integrations/maven-plugin-integration-with-snyk).
-Om Static Analysis Security Tests (SAST)-gedeelte te gebruiken moet je dit  eerst aanzetten via de webinterface.
-Je kan de command line interface (CLI) gebruiken om Snyk te draaien, aan te raden is om deze via npm te installeren.
-Voor de dependencies wordt `snyk test` gebruikt, voor SAST wordt `snyk code test` gebruikt.
-Om een rapportje in de webinterface te tonen kun je `snyk monitor` gebruiken.
+Ga naar [Snyk.io](https://app.snyk.io/account) voor een API-key nadat je je account hebt aangemaakt.
+Hier kan je ook het rapport inzien, wil je dit lokaal inzien gebruik dan Snyk CLI.
+Gebruik `mvn verify` om de Snyk maven plugin te runnen, zowel lokaal als in de pipeline.
 
-De gevonden verbeteringen verbeter je in stap 4.
+De gevonden verbeteringen verbeter je in stap 4, en plaats hier de door Synk gevonden issues bij.
 Noteer wat je opvalt in `docs/2-notes.md`.
 Vermeld gebruikte bronnen! Weet dat er meer security issues inzitten dan wat de automatische security check aangeeft.
-
-Voeg deze tool ook toe aan je build pipeline (GitHub Actions). Zie hiervoor de slides.
 
 Commit en push je werk. Draait dit ook in de pipeline? Slaagt alles nog?
 Denk aan een zinvolle, beschrijvende commit message.
