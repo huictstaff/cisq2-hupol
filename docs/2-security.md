@@ -49,11 +49,14 @@ Denk aan een zinvolle, beschrijvende commit message.
 ### Stap 3. Automatische security check
 
 Voer een automatische analyse uit met [Snyk](https://docs.snyk.io/integrate-with-snyk/snyk-ci-cd-integrations/maven-plugin-integration-with-snyk).
-Ga naar [Snyk.io](https://app.snyk.io/account) voor een API-key nadat je je account hebt aangemaakt.
+Ga naar [Snyk.io](https://app.snyk.io/account) voor een API-key nadat je je account hebt aangemaakt. Zet ook `Synk Code` aan in de instellingen.
 Hier kan je ook het rapport inzien, wil je dit lokaal inzien gebruik dan Snyk CLI.
 Gebruik `mvn verify` om de Snyk maven plugin te runnen, zowel lokaal als in de pipeline.
+Zet de API-key in application.properties en voeg dit bestand toe aan de git.ignore.
 
-De gevonden verbeteringen verbeter je in stap 4, en plaats hier de door Synk gevonden issues bij.
+De geavanceerdere optie is om via de GitHub CLI de REST-api aan te spreken en je api-key als [secret mee te geven ](https://devopsjournal.io/blog/2022/11/02/GitHub-secrets-without-admin-rights)
+
+De gevonden verbeteringen verbeter je in stap 4, plaats hier het rapport van de door Snyk gevonden issues bij.
 Noteer wat je opvalt in `docs/2-notes.md`.
 Vermeld gebruikte bronnen! Weet dat er meer security issues inzitten dan wat de automatische security check aangeeft.
 
