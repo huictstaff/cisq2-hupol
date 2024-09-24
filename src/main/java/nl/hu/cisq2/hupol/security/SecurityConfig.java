@@ -1,5 +1,6 @@
 package nl.hu.cisq2.hupol.security;
 
+import io.jsonwebtoken.security.Keys;
 import nl.hu.cisq2.hupol.security.application.AuthenticationService;
 import nl.hu.cisq2.hupol.security.presentation.filter.JwtAuthenticationFilter;
 import nl.hu.cisq2.hupol.security.presentation.filter.JwtAuthorizationFilter;
@@ -19,6 +20,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import javax.crypto.SecretKey;
+
+import java.nio.charset.StandardCharsets;
 
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
@@ -47,6 +52,8 @@ public class SecurityConfig {
 
     @Bean
     protected SecurityFilterChain filterChain(final HttpSecurity http, final AuthenticationService authenticationService, final AuthenticationManager authenticationManager) throws Exception {
+        SecretKey signingKey = Keys.hmacShaKeyFor(this.jwtSecret.getBytes(StandardCharsets.UTF_8));
+
         http.cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
@@ -57,11 +64,11 @@ public class SecurityConfig {
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(
                         LOGIN_PATH,
-                        jwtSecret,
+                        signingKey,
                         jwtExpirationInMs,
                         authenticationService
                 ), UsernamePasswordAuthenticationFilter.class)
-                .addFilter(new JwtAuthorizationFilter(jwtSecret, authenticationManager))
+                .addFilter(new JwtAuthorizationFilter(signingKey, authenticationManager))
                 .sessionManagement(s -> s.sessionCreationPolicy(STATELESS));
         return http.build();
     }

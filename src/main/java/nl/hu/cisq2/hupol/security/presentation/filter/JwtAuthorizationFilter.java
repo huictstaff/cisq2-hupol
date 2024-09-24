@@ -16,6 +16,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
+import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,11 +28,11 @@ import java.util.stream.Collectors;
  * the Authorization header of the incoming request.
  */
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
-    private final String secret;
+    private final SecretKey secretKey;
 
-    public JwtAuthorizationFilter(String secret, AuthenticationManager authenticationManager) {
+    public JwtAuthorizationFilter(SecretKey secretKey, AuthenticationManager authenticationManager) {
         super(authenticationManager);
-        this.secret = secret;
+        this.secretKey = secretKey;
     }
 
     @Override
@@ -56,23 +57,21 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             return null;
         }
 
-        byte[] signingKey = this.secret.getBytes();
-
-        JwtParser jwtParser = Jwts.parserBuilder()
-                .setSigningKey(signingKey)
+        JwtParser jwtParser = Jwts.parser()
+                .verifyWith(this.secretKey)
                 .build();
 
         Jws<Claims> parsedToken = jwtParser
-                .parseClaimsJws(token.replace("Bearer ", ""));
+                .parseSignedClaims(token.replace("Bearer ", ""));
 
         var username = parsedToken
-                .getBody()
+                .getPayload()
                 .getSubject();
 
-        var authorities = ((List<?>) parsedToken.getBody()
+        var authorities = ((List<?>) parsedToken.getPayload()
                 .get("roles")).stream()
                 .map(authority -> new SimpleGrantedAuthority((String) authority))
-                .collect(Collectors.toList());
+                .toList();
 
         UserProfile principal = new UserProfile(username, authorities);
 

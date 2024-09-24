@@ -2,8 +2,6 @@ package nl.hu.cisq2.hupol.security.presentation.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,6 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -32,20 +31,20 @@ import java.util.List;
  * requests to restricted endpoints.
  */
 public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
-    private final String secret;
+    private final SecretKey secretKey;
     private final Integer expirationInMs;
 
     private final AuthenticationService authenticationService;
 
     public JwtAuthenticationFilter(
             String path,
-            String secret,
+            SecretKey secretKey,
             Integer expirationInMs,
             AuthenticationService authenticationService
     ) {
         super(new AntPathRequestMatcher(path));
 
-        this.secret = secret;
+        this.secretKey = secretKey;
         this.expirationInMs = expirationInMs;
         this.authenticationService = authenticationService;
     }
@@ -75,13 +74,13 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
                 .toList();
 
         String token = Jwts.builder()
-                .signWith(Keys.hmacShaKeyFor(this.secret.getBytes()), SignatureAlgorithm.HS512)
-                .setHeaderParam("typ", "JWT")
-                .setIssuer("hupoll")
-                .setAudience("auth")
-                .setSubject(userProfile.username())
-                .setExpiration(new Date(System.currentTimeMillis() + this.expirationInMs))
+                .header().add("typ", "JWT").and()
+                .issuer("hupol")
+                .audience().add("hupol").and()
+                .subject(userProfile.username())
+                .expiration(new Date(System.currentTimeMillis() + this.expirationInMs))
                 .claim("roles", roles)
+                .signWith(secretKey)
                 .compact();
 
         response.addHeader("Authorization", "Bearer " + token);
