@@ -3,7 +3,7 @@
 In deze opdracht gaan we werken aan een project genaamd *Hupol*, 
 met als doel het analyseren en verbeteren van de 
 *onderhoudbaarheid*, *veiligheid*, *prestaties* en *productieklaar maken* 
-van een software systeem.
+van een softwaresysteem.
 
 Dit is een educatief werk van fictie, 
 elke overeenkomst met echte personen, gebeurtenissen of systemen 
@@ -44,7 +44,7 @@ gevraagd om de technische schuld af te lossen
 die is opgebouwd tijdens het experiment.
 
 We benaderen het probleem van verschillende hoeken:
-*maintainability*, *security*, *performance* en *operations*. Deze komen overeen met de vier pijlers uit ISO25010-model, dat we nog kennen uit CISQ1.
+*maintainability*, *security* en *operations*. Deze komen overeen met de drie pijlers uit ISO25010-model, dat we nog kennen uit CISQ1.
 Per opdracht kijk je naar een andere pijler, waarbij er opgemerkt moet worden dat we dit onderwerk niet uitputtend kunnen behandelen.
 Per opdracht bekijken we elke keer vanuit een andere invalshoek de staat van het systeem,
 bedenken we wat er beter kan en voeren we deze door

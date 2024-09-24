@@ -12,19 +12,8 @@
 > A legacy that anyone would *love* to inherit!
 > Wouldn't you?"
 
-## De opdracht
-Kijk kritisch naar 
-de `votes`, `results` en `candidates` components te kijken, 
-eventuele *code smells* te verwijderen 
-en de architectuur waar nodig te herstellen.
-Hierbij maken we gebruik van *static analysis tools*,
-*refactoring* en *architecture testing*.
-
-### Stap 1. Bestudeer de opdracht en de code, draai de tests
-Wat zijn de ambities van het bedrijf?
-Wat zou er allemaal in het project moeten zitten? 
-Welke technieken zijn er gebruikt?
-Wat zijn de verantwoordelijkheden van de verschillende components?
+### Stap 1. Bestudeer de opdracht en maak een klassendiagram
+Bestudeer de opdracht in `0-background`. Teken voor jezelf uit in een klassendiagram hoe het softwaresysteem zou moeten werken, zónder naar de code gekeken te hebben.
 Hoe zit de structuur in elkaar volgens de *intended architecture*?
 
 Bekijk de code van
@@ -50,7 +39,7 @@ Teken eventueel een domeinmodel uit voor jezelf hoe je deze applicatie zelf zou 
 
 Commit en push je werk.
 Denk aan een zinvolle, beschrijvende commit message.
-> ❗ Pas op met een generatieve AI (ChatGPT, Bing, etc.), code kwaliteit wordt daar vaker slechter van
+> ❗ Pas op met een generatieve AI (ChatGPT, Bing, etc.), codekwaliteit wordt daar vaker slechter van
 
 ### Stap 3. Voeg een build pipeline toe
 
@@ -58,40 +47,28 @@ Gebruik hiervoor
 [GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven). Haak PMD (zie hieronder) in op de maven lifecycle in de build. Gebruik maven verify en skip geen tests.
 
 ### Stap 4. Schoon de code op en refactor de architectuur
-
-Maak voor deze opdracht gebruik van [PMD](https://docs.pmd-code.org/latest/)
-
-[//]: # (* [Checkstyle]&#40;https://checkstyle.org/&#41;)
-
-[//]: # (* [SonarQube]&#40;https://docs.sonarqube.org/latest/analyzing-source-code/languages/java/&#41;)
-
-[//]: # (* [Error Prone]&#40;https://errorprone.info/&#41; )
-
-[//]: # (* [Infer]&#40;https://fbinfer.com/&#41; )
-
-1. Kies een passende codestyle (standaard PMD volgt de Java Sun), lees de documentatie(!) van PMD en
-neem de tool op in het project via Maven (zoek naar een Maven plugin). Neem PMD op in de test lifecycle van Maven. 
-Zorg dat het minstens de cyclomatische complexiteit meet.
-
-2. Schoon vervolgens de code op van bestaande klassen binnen `votes`, `results` en `candidates`.
-Kijk ook naar de test code. Richt je hierbij op clean en declarative code, 
+1. Refactor de architectuur. Bedenk welke verantwoordelijkheden in welke klassen of laag thuishoren.
+   Je mag nieuwe klassen introduceren en de code vriendelijker voor
+   gebruikers en developers maken. Reduceer waar nodig (en logisch).
+   
+2. Waar liggen de verantwoordelijkheden van packages, hoe praten deze met elkaar?
+   Wie beheert zijn informatie en hoe komt een pacakage aan informatie die diegene nodig heeft?
+   Bedenk welke (nieuwe) klassen er nodig zijn. Je mag de gehele applicatie aanpassen.
+2. Refactor de tests zodat deze weer slagen. Let erop dat alle tests uiteindelijk weer slagen! (dus comment geen tests uit)
+3. Neem de [PMD](https://docs.pmd-code.org/latest/) plugin op in je project en de `pom-complexity-analysis.xml` in je root.
+Draai de plugin en bekijk het rapport. 
+4. Schoon vervolgens de code op van bestaande klassen binnen `votes`, `results` en `candidates`.
+Kijk ook naar de testcode. Richt je hierbij op clean en declarative code, 
 bijvoorbeeld door gebruik te maken van Java-features 
 als [switch expressions](https://docs.oracle.com/en/java/javase/13/language/switch-expressions.html),
 [functional interfaces](https://www.baeldung.com/java-8-functional-interfaces) 
 en de [Stream API](https://stackify.com/streams-guide-java-8/). 
-3. Bedenk welke verantwoordelijkheden in welke klassen of laag thuishoren.
-Je mag nieuwe klassen introduceren en de code vriendelijker voor
-gebruikers en developers maken.
 
-4. Je mag aanvullend  hulp inschakelen die je kunt gebruiken:
-je IDE, of stackoverflow. Schrijf wel op wat je hebt gedaan (in `notes-1.md`)  
-en wees kritisch op de uitkomst. Vermeld gebruikte bronnen!
-5. Maak nieuwe packages en klassen aan, of reduceer, waar nodig (en logisch). Waar liggen de verantwoordelijkheden van packages, hoe praten deze met elkaar?
-   Wie beheert zijn informatie en hoe komt een pacakage aan informatie die diegene nodig heeft?
-   Bedenk welke (nieuwe) klassen er nodig zijn en teken eventueel een domeinmodel uit voor jezelf.
-   Je mag het hele project inclusief alle tests aanpassen, maar let erop dat alle tests uiteindelijk weer slagen! (dus comment geen tests uit)
 6. Hoe sla je je gegevens op? Doe je dat volgens een bepaalde normaalvorm?
 7. Beschrijf wat je hebt gedaan. Hoe is de accidental complexity verminderd? Laat je code zien waarin je dit hebt verbeterd.
+   Je mag aanvullend  hulp inschakelen die je kunt gebruiken:
+   je IDE, of stackoverflow. Schrijf wel op wat je hebt gedaan (in `notes-1.md`)  
+   en wees kritisch op de uitkomst. Vermeld gebruikte bronnen!
 
 > ❗ Je hoeft alleen de `votes`, `results` en `candidates` components
 te verbeteren (je zou voor de andere components 
