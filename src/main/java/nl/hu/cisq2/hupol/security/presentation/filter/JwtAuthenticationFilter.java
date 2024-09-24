@@ -74,7 +74,7 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
                 .toList();
 
         String token = Jwts.builder()
-                .header().add("typ", "JWT").and()
+                .header().add("type", "JWT").and()
                 .issuer("hupol")
                 .audience().add("hupol").and()
                 .subject(userProfile.username())
