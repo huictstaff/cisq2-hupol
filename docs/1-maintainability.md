@@ -95,9 +95,7 @@ Commit en push je werk. Zorg dat je pipeline nog draait
 
 ### Stap 6. Refactoring voor een XML-parser toevoegen
 Refactor de structuur van de `votes`, `results` en `candidates` components 
-zodat het mogelijk wordt om naast de CSV-parser een XML-parser te gebruiken. Kijk ook naar de tests. Misschien zouden we nog wel meer
-moeten refactoren, maar we beginnen klein, denk aan de
-[Strangler Fig pattern](https://martinfowler.com/bliki/StranglerFigApplication.html).
+zodat het mogelijk wordt om naast de CSV-parser een XML-parser te gebruiken.
 Je hoeft geen XML-parser te implementeren, maar pas de bestaande code 
 aan zodat het CSV-parsing-gedeelte gemakkelijk kan worden uitgewisseld
 voor een XML-parsing-gedeelte. Maak het zo, dat uiteindelijk alleen de interface voor de XML-parser geimplementeerd hoeft te worden.
