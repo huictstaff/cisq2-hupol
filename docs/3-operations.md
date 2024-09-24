@@ -1,4 +1,4 @@
-# 4. ISO25010 pijler: operations
+# 3. ISO25010 pijler: operations
 
 > ![Elron Husky, a husky dog in a suit](img/elron-husky.png)
 >
