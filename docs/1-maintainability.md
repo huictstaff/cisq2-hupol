@@ -16,11 +16,12 @@
 Bestudeer de opdracht in `0-background`. Teken voor jezelf uit in een klassendiagram hoe het softwaresysteem zou moeten werken, zónder naar de code gekeken te hebben.
 Hoe zit de structuur in elkaar volgens de *intended architecture*?
 
+Stel er zou geen applicatie al staan, hoe zou je dan de applicatie ontwerpen op basis van de omschrijving? Maak op basis van deze vraag je klassendiagram.
+
+### Stap 2. Noteer wat er beter kan
 Bekijk de code van
 de `votes`, `results` en `candidates` components. Draai eerst mvn verify en bekijk de docker-compose.yml en de verschillende .properties-bestanden
 voor de instellingen)
-
-### Stap 2. Noteer wat er beter kan
 Maak een nette indeling met kopjes in een markdowndocument en schrijf puntsgewijs op wat er volgens jou beter kan
 wat betreft de code van de `votes`, `results` en `candidates` components.
 
