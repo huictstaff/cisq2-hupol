@@ -214,6 +214,7 @@ hosting als qua build, maar het is fijn om iets
 te hebben om mee te oefenen.
 
 #### A. Deployment met Render.com
+Afhankelijk van hoe je je deployment regelt configureer je je pipeline op GitHub actions anders. De gewenste manier is om in de pipeline je docker container te bouwen, maar Render ondersteund meerdere mogelijkheden.
 Voor Render volg de volgende stappen:
 
 1. Maak een account op Render.com
