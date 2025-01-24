@@ -1,4 +1,4 @@
-FROM postgres:13-alpine
+FROM postgres:alpine
 
 # Copy bash scripts to run when building
 COPY create_users.sh /docker-entrypoint-initdb.d/01-create_users.sh
