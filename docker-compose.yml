@@ -1,6 +1,5 @@
-version: "3.8"
 services:
-  db:
+  cisq2-db:
     build: development/db
     ports:
       - "15432:5432"

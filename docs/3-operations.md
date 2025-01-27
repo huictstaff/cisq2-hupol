@@ -71,20 +71,21 @@ maar baseert het op een bestaande image waar
 de basisbenodigdheden inzitten. Voor uitleg van Docker zelf kijk [hier](https://docs.docker.com/language/java/build-images/#create-a-dockerfile-for-java).
 
 Uiteindelijk heb je een dockerfile met daarin:
-1. `FROM` met Java 17 JDK + tag
+1. `FROM` met Java 21 JDK + tag
 2. `COPY` de gecompileerde JAR kopiëren
 3. `RUN` commandos
-4. `ENTRYPOINT` opties
+4. Een nieuwe `FROM` voor multistage build (aangeraden)
+5. `ENTRYPOINT` opties
 
 #### Extra uitleg per stap
 1. Basisimage: een minimaal operating system met een
 ingebakken Java Runtime Environment (JRE)
 of een Java Development Kit (JDK). Deze kan je vinden op een Docker Image Registry, zoals
-[Docker Hub](https://hub.docker.com/).  Laten we kiezen voor Java `17-jdk` met als platform een minimaal Linux operating system (`alpine`). 
-Deze *tag* je met een versienummer en het gewenste platform. De tag is dan in dit geval: `17-jdk-alpine`.
+[Docker Hub](https://hub.docker.com/).  Laten we kiezen voor Java `21-jdk` met als platform een minimaal Linux operating system (`maven`). 
+Deze *tag* je met een versienummer en het gewenste platform.
 
 2. Wanneer we met Maven onze applicatie compileren
-(bijv. `mvn compile`), 
+(bijv. `mvn clean package`), 
 komen de resultaten (`.jar` voor Java) in een `target`
 directory te staan. Dit wordt door de Java Virtual Machine (JVM)
 uitgelezen en omgezet in voor onze computer 
@@ -98,7 +99,10 @@ op de volgende regel van onze `Dockerfile`, geef de target
 de naam `app.jar`.
 3. `RUN` is bijvoorbeeld handig wanneer je een directory wilt aanmaken
 
-4. Het startcommando aangeven zodra Docker de image opstart.
+4. Multistage Docker builds gebruik je voor meerdere fase in je project omdat je bijvoorbeeld buildtools niet mee wilt leveren aan je productiecontainer.
+Je kan daarvoor meerdere keren `FROM` in je Dockerfile zetten en de output van een stap hergebruiken
+
+5. Het startcommando aangeven zodra Docker de image opstart.
 Dit doen we door de [`ENTRYPOINT` instructie](https://docs.docker.com/engine/reference/builder/#entrypoint) toe te voegen aan de `Dockerfile`.
 Een entrypoint schrijf je meestal in array-notatie
 (de *exec form*) in plaats van een regel text.
@@ -162,7 +166,7 @@ vervangen met underscores. Zo kunnen we `spring.datasource.url`
 als volgt veranderen:
 
 ```bash
-docker run -it -e SPRING_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:15432/cisq2-hupol hupol/basic
+docker run -it -e SPRING_DATASOURCE_URL=jdbc:postgresql://cisq2-db-1:15432/cisq2-hupol hupol/basic
 
 ```
 
@@ -183,7 +187,7 @@ In ons geval willen we dat 8080 van de host
 verwijst naar 8080 van de container, 
 het hele commando wordt dan:
 ```bash
-docker run -it -e SPRING_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:15432/cisq2-hupol -p 8080:8080 hupol/basic
+docker run -it -e SPRING_DATASOURCE_URL=jdbc:postgresql://db:15432/cisq2-hupol hupol/basic
 ```
 
 Doe een call naar `GET localhost:8080/elections/0/results`.
