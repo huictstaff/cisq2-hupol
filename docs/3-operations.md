@@ -166,7 +166,7 @@ vervangen met underscores. Zo kunnen we `spring.datasource.url`
 als volgt veranderen:
 
 ```bash
-docker run -it -e SPRING_DATASOURCE_URL=jdbc:postgresql://cisq2-db-1:15432/cisq2-hupol hupol/basic
+docker run -it -e SPRING_DATASOURCE_URL=jdbc:postgresql://cisq2db:15432/cisq2-hupol hupol/basic 
 
 ```
 
@@ -186,6 +186,7 @@ als een poort op de host: `-p <host_port>:<container_port>`.
 In ons geval willen we dat 8080 van de host
 verwijst naar 8080 van de container, 
 het hele commando wordt dan:
+//todo aanpassen want niet meer nodig.
 ```bash
 docker run -it -e SPRING_DATASOURCE_URL=jdbc:postgresql://db:15432/cisq2-hupol hupol/basic
 ```

@@ -1,5 +1,5 @@
 services:
-  cisq2-db:
+  cisq2db:
     build: development/db
     ports:
       - "15432:5432"
@@ -10,4 +10,10 @@ services:
       - "DB_APP_USER=cisq2-hupol"
       - "DB_APP_PASS=cisq2-hupol"
     volumes:
-      - "./development/data:/var/data/db"
+      - "./development/db:/docker-entrypoint-initdb.d"
+  hupol:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - "SPRING_DATASOURCE_URL=jdbc:postgresql://cisq2db:5432/cisq2-hupol"
