@@ -43,6 +43,15 @@ Bekijk bijvoorbeeld ook hoe Spring omgaat met
 en [authorization](https://www.baeldung.com/role-and-privilege-for-spring-security-registration).
 Hoe is dat in dit project geregeld? Kijk in de code, de tests, de database en de docs. Er zijn ongeveer 35 zaken te vinden, waarvan 10 kritisch
 
+Gebruik de volgende tabel:
+
+| Prioriteit(MOSCOW)  | Omschrijving                                                                   | Fix                                                                                                                         | OWASP                                                                                                                   |
+|---------------------|--------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| Must fix (kritisch) | Omschrijf hier in 1 of 2 zinnen wat het gevonden issue is én waar het voorkomt | Bijvoorbeeld in code: `AuthenticationService → login(..)` Fix kan uiteraard ook iets anders zijn. Schrijf dat hier kort op. | `Bijvoorbeeld: A3:2017` - Sensitive Data Exposure Kan ook niet van toepassing zijn of een andere bron(CIA Triad, Snyk). |
+| Should fix          | …                                                                              | …                                                                                                                           | …                                                                                                                       |
+| Could fix           | …                                                                              | …                                                                                                                           | …                                                                                                                       |
+| Wont fix            | …                                                                              | …                                                                                                                           | …                                                                                                                       |
+
 Commit en push je werk.
 Denk aan een zinvolle, beschrijvende commit message.
 
