@@ -109,7 +109,7 @@ Een entrypoint schrijf je meestal in array-notatie
 `ENTRYPOINT [command, parameter1, parameter2, ...]`
 Schrijf eerst weer een witregel en voeg dan een `ENTRYPOINT` aan de Dockerfile toe. 
 Parameters en commando's staan tussen "".
-
+//todo waarschijnlijk vanaf hier alleen docker compose draaien
 #### B. Bouw de image
 
 We kunnen nu een image bouwen door `docker build`
