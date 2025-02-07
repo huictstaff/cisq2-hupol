@@ -72,7 +72,7 @@ de basisbenodigdheden inzitten. Voor uitleg van Docker zelf kijk [hier](https://
 
 Uiteindelijk heb je een dockerfile met daarin:
 1. `FROM` met Java 21 JDK + tag
-2. `COPY` de gecompileerde JAR kopiëren
+2. `COPY` de gecompileerde code kopiëren
 3. `RUN` commandos
 4. Een nieuwe `FROM` voor multistage build (aangeraden)
 5. `ENTRYPOINT` opties
@@ -199,7 +199,11 @@ Gelukt?
 Commit en push je werk.
 Denk aan een zinvolle, beschrijvende commit message.
 
-### Stap 4. Deployment
+### Stap 4
+
+bouw een pipeline met docker
+
+### Stap 5. Deployment
 
 Uiteindelijk willen we een bekende cloud-aanbieder gebruiken.
 AWS, GCP en Azure vragen echter om een credit card. 
