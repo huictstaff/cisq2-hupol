@@ -72,7 +72,7 @@ de basisbenodigdheden inzitten. Voor uitleg van Docker zelf kijk [hier](https://
 
 Uiteindelijk heb je een dockerfile met daarin:
 1. `FROM` met Java 21 JDK + tag
-2. `COPY` de gecompileerde code kopiëren
+2. `COPY` de broncode kopiëren
 3. `RUN` commandos
 4. Een nieuwe `FROM` voor multistage build (aangeraden)
 5. `ENTRYPOINT` opties
