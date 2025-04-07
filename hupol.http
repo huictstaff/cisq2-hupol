@@ -65,7 +65,6 @@ Content-Disposition: form-data; name="file"; filename="candidates.csv"
 POST localhost:8080/votes
 Authorization: Bearer {{authToken}}
 Content-Type: multipart/form-data; boundary=WebAppBoundary
-Content-Length: 10240000000000000
 
 --WebAppBoundary
 Content-Disposition: form-data; name="file"; filename="votes.csv"
@@ -77,4 +76,3 @@ Content-Disposition: form-data; name="file"; filename="votes.csv"
 # group: results
 # @name Election results per candidate
 GET http://localhost:8080/election/{{electionId}}/results
-#todo implement electionID

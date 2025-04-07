@@ -11,9 +11,3 @@ services:
       - "DB_APP_PASS=cisq2-hupol"
     volumes:
       - "./development/db:/docker-entrypoint-initdb.d"
-  hupol:
-    build: .
-    ports:
-      - "8080:8080"
-    environment:
-      - "SPRING_DATASOURCE_URL=jdbc:postgresql://cisq2db:5432/cisq2-hupol"
