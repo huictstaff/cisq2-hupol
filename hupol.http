@@ -52,7 +52,6 @@ POST localhost:8080/candidates
 Authorization: Bearer {{authToken}}
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 
-
 --WebAppBoundary
 Content-Disposition: form-data; name="file"; filename="candidates.csv"
 
