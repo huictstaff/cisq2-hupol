@@ -1,6 +1,6 @@
 services:
   cisq2db:
-    build: development/db
+    image: postgres
     ports:
       - "15432:5432"
     environment:

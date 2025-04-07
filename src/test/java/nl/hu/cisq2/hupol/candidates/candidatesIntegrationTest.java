@@ -41,10 +41,10 @@ class candidatesIntegrationTest {
         // Then the candidates in that file should show up in the database
         var allCandidates = candidateRepository.findAll();
         var expectedCandidates = List.of(
-                new Candidate("2a3fva21", 1L, "Elron Husky", "MarsRed"),
+                new Candidate("2a3fva21", 1L, "Boogy Husky", "MarsRed"),
                 new Candidate("83a231as", 1L, "Oshari Letux", "Greens"),
                 new Candidate("ya3fva21", 1L, "Henry Fleming", "Rovers"),
-                new Candidate("2a3fva21", 2L, "Elron Husky", "MarsRed")
+                new Candidate("2a3fva21", 2L, "Boogy Husky", "MarsRed")
         );
 
         for (int i = 0; i < allCandidates.size(); i++) {

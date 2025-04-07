@@ -1,8 +1,7 @@
 # Opdracht 2: ISO25010 pijler: security
 
-> ![Elron Husky, a husky dog in a suit](img/elron-husky.png)
->
-> __Elron Husky, CEO of *Husky Martian Political Systems*:__
+
+> __Boogy Husky, CEO of *Husky Martian Political Systems*:__
 >
 > "Voting information can be considered sensitive information.
 > That's why we at Hupol made a gigantic effort

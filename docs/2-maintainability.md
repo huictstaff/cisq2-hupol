@@ -1,8 +1,6 @@
 # Opdracht 1: ISO25010 pijler: maintainability
 
-> ![Elron Husky, a husky dog in a suit](img/elron-husky.png)
->
-> __Elron Husky, CEO of *Husky Martian Political Systems*:__
+> __Boogy Husky, CEO of *Husky Martian Political Systems*:__
 > 
 > "At Hupol, we only work with the *best* engineers! They
 > know how to design a piece of software,

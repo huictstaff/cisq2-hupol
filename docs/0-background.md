@@ -13,19 +13,17 @@ voor daadwerkelijke ontwikkeling.
 
 ## Achtergrond
 Ondanks problemen dicht bij huis, 
-streeft Elron Husky, CEO van Husky Martian Political Systems, 
+streeft Boogy Husky, CEO van Husky Martian Political Systems, 
 naar de sterren --- letterlijk. 
 
 Omdat hij de bewoning van andere planeten onvermijdelijk acht, 
 wil hij voorbereid zijn op het moment dat het zover is: 
 
-> ![Elron Husky, a husky dog in a suit](img/elron-husky.png)
->
-> __Elron Husky, CEO of *Husky Martian Political Systems*:__
+> __Boogy Husky, CEO of *Husky Martian Political Systems*:__
 >"Let's do democracy right from the start. 
 > We need to develop a toolkit for digital 
 > democracy and politics. And we need to be the ones
-> to control it!"
+> to develop it!"
 
 Ondanks de [risico's](https://www.cylumena.com/insights/8-cybersecurity-reasons-online-voting-never-happen/) en [uitdagingen](https://www.aaas.org/epi-center/internet-online-voting)
 van [e-voting](https://www.youtube.com/watch?v=LkH2r-sNjQs) 
@@ -36,7 +34,7 @@ Met andere woorden: peilingen en stemmen voor Marsbewoners!
 De eerste iteratie van Hupol werd ontworpen als een proof of concept 
 om te zien of een stem- of peiling-API haalbaar is. 
 Los van de sceptische houding in de maatschappij 
-en andere praktische bezwaren, was Elron Husky tevreden. 
+en andere praktische bezwaren, was Boogy Husky tevreden. 
 Het is tijd voor de volgende stap! 
 Voordat het project echt kan knallen
 is *ons*, software development experts, 

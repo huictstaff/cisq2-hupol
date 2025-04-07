@@ -33,7 +33,7 @@ const martianRegions = [
 
 const factions = ["Martian Freedom", "Back2Earth", "Red Rock", "Kurinti", "Clarity"];
 const candidateSeed = [
-    ["Elron Husky", factions[0]],
+    ["Boogy Husky", factions[0]],
     ["Oshari Letux", factions[1]],
     ["Tuss Rock", factions[2]],
     ["Job Kurinti", factions[3]],

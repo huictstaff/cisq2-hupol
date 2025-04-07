@@ -1,0 +1,80 @@
+# HU CISQ2 Hupol
+
+###
+# group: security
+# @name Login
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "pass"
+}
+
+> {%
+    if (response.status === 200) {
+        client.log("testing");
+        const authHeader = response.headers.valueOf("Authorization");
+        const token = authHeader.substring(7);
+        client.log("Setting token: " + token);
+        client.global.set("authToken", token);
+    }
+
+%}
+
+###
+# group: security
+# @name Register
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "pass"
+}
+
+###
+# group: security
+# @name Promote to admin
+POST localhost:8080/auth/admin/user
+Authorization: Bearer {{authToken}}
+
+###
+# group: security
+# @name Demote admin
+DELETE localhost:8080/auth/admin/user
+Authorization: Bearer {{authToken}}
+
+###
+# group: candidates
+# @name import
+POST localhost:8080/candidates
+Authorization: Bearer {{authToken}}
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="candidates.csv"
+
+< development/db/examples/candidates.csv
+--WebAppBoundary
+
+###
+# group: votes
+# @name import
+POST localhost:8080/votes
+Authorization: Bearer {{authToken}}
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Content-Length: 10240000000000000
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="votes.csv"
+
+< development/db/examples/votes.csv
+--WebAppBoundary
+
+###
+# group: results
+# @name Election results per candidate
+GET http://localhost:8080/election/{{electionId}}/results
+#todo implement electionID

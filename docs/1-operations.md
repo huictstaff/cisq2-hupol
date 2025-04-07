@@ -1,8 +1,7 @@
 # 3. ISO25010 pijler: operations
 
-> ![Elron Husky, a husky dog in a suit](img/elron-husky.png)
->
-> __Elron Husky, CEO of *Husky Martian Political Systems*:__
+
+> __Boogy Husky, CEO of *Husky Martian Political Systems*:__
 >
 > "Working on Hupol and keeping it in production is a breeze.
 > Whether your working on your development environment
@@ -109,6 +108,7 @@ Een entrypoint schrijf je meestal in array-notatie
 `ENTRYPOINT [command, parameter1, parameter2, ...]`
 Schrijf eerst weer een witregel en voeg dan een `ENTRYPOINT` aan de Dockerfile toe. 
 Parameters en commando's staan tussen "".
+
 //todo waarschijnlijk vanaf hier alleen docker compose draaien
 #### B. Bouw de image
 
@@ -121,7 +121,7 @@ docker build -t hupol/basic .
 ```
 
 Het puntje (`.`) geeft aan dat de Dockerfile in de huidige directory
-is te vinden, terwijl je met `-t` de tag aangeven.
+is te vinden, terwijl je met `-t` de tag aangeeft.
 
 Met `docker image ls` kan je kijken welke docker 
 images je allemaal op je computer hebt staan.

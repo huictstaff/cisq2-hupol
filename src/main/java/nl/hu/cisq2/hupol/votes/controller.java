@@ -23,7 +23,7 @@ public class controller {
     }
 
     @PostMapping("/votes")
-    public void importtvotes(@RequestParam("file") MultipartFile f) { // upload file in body form data
+    public void importtvotes(@RequestParam(value = "file") MultipartFile f) { // upload file in body form data
         try {
             if(f!=null && !f.isEmpty()) {
                 List<Vote> vs = new ArrayList<>();
