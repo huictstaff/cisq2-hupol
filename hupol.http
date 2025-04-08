@@ -55,7 +55,7 @@ Content-Type: multipart/form-data; boundary=WebAppBoundary
 --WebAppBoundary
 Content-Disposition: form-data; name="file"; filename="candidates.csv"
 
-< development/db/examples/candidates.csv
+< src/test/resources/fixtures/candidates-01.csv
 --WebAppBoundary
 
 ###
@@ -69,7 +69,7 @@ Content-Type: multipart/form-data; boundary=WebAppBoundary
 --WebAppBoundary
 Content-Disposition: form-data; name="file"; filename="votes.csv"
 
-< development/db/examples/votes.csv
+< src/test/resources/fixtures/votes-01.csv
 --WebAppBoundary
 
 ###
