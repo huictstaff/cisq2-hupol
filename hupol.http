@@ -47,7 +47,7 @@ Authorization: Bearer {{authToken}}
 
 ###
 # group: candidates
-# @name import
+# @name import candidates
 POST localhost:8080/candidates
 Authorization: Bearer {{authToken}}
 Content-Type: multipart/form-data; boundary=WebAppBoundary
@@ -60,7 +60,8 @@ Content-Disposition: form-data; name="file"; filename="candidates.csv"
 
 ###
 # group: votes
-# @name import
+# @name import votes
+# @timeout 2400
 POST localhost:8080/votes
 Authorization: Bearer {{authToken}}
 Content-Type: multipart/form-data; boundary=WebAppBoundary
